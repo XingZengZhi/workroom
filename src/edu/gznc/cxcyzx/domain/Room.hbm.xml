@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="edu.gznc.cxcyzx.domain.Room" table="room">
+        <id name="roomId" type="java.lang.Integer">
+            <column name="roomId" />
+            <generator class="native" />
+        </id>
+        <property name="roomName" type="java.lang.String">
+            <column name="roomName" />
+        </property>
+        <property name="roomSum" type="java.lang.String">
+            <column name="roomSum" />
+        </property>
+        <property name="roomFoundTime" type="java.util.Date">
+            <column name="roomFoundTime" />
+        </property>
+        <property name="roomContactWay" type="java.lang.String">
+            <column name="roomContactWay" />
+        </property>
+        <set name="users" table="user" inverse="false" lazy="true">
+            <key>
+                <column name="roomId" />
+            </key>
+            <one-to-many class="edu.gznc.cxcyzx.domain.User" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.ecoding" value="UTF-8"/>
+	<constant name="struts.action.extension" value="action,," />
+	<package name="workroom" extends="struts-default" namespace="/">
+		<!-- 权限拦截器 -->
+		<!-- <interceptors>
+			<interceptor name="privilegeInterceptor" class="edu.gznc.cxcyzx.web.interceptors.PrivilegeInterceptor"></interceptor>
+		</interceptors>
+		<global-results>
+			<result name="login">/WEB-INF/pages/login.jsp</result>
+		</global-results> -->
+		
+		<!-- 用户模块 -->
+		<action name="user_*" method="{1}" class="userAction">
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="loginJsp">/WEB-INF/pages/login.jsp</result>
+			<result name="registeJsp">/WEB-INF/pages/registe.jsp</result>
+			<result name="exit" type="redirect">/index.jsp</result>
+			<result name="registe" type="redirect">/index.jsp</result>
+		</action>
+		
+	</package>
+</struts>

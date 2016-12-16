@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="edu.gznc.cxcyzx.domain.User" table="user">
+        <id name="userId" type="long">
+            <column name="userId" />
+            <generator class="native" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="userName" />
+        </property>
+        <property name="userSex" type="java.lang.String">
+        	<column name="userSex" />
+        </property>
+         <property name="userStuID" type="java.lang.String">
+            <column name="userStuID" />
+        </property>
+        <property name="userEmail" type="java.lang.String">
+        	<column name="userEmail" />
+        </property>
+        <property name="userPassword" type="java.lang.String">
+            <column name="userPassword" />
+        </property>
+        <property name="userRegistTime" type="java.util.Date">
+            <column name="userRegistTime" />
+        </property>
+        <property name="userText" type="java.lang.String">
+            <column name="userText" />
+        </property>
+        <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room" fetch="join">
+            <column name="roomId" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
