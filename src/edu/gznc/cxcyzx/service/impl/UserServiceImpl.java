@@ -3,6 +3,7 @@ package edu.gznc.cxcyzx.service.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.gznc.cxcyzx.dao.UserDao;
@@ -17,13 +18,9 @@ import redis.clients.jedis.Jedis;
 
 @Transactional
 public class UserServiceImpl implements UserService {
+	@Autowired
 	private UserDao userDao;
 	
-	public void setUserDao(UserDao userDao){
-		this.userDao = userDao;
-	}
-	
-
 	@Override
 	public User login(User user) {
 		user.setUserPassword(MD5Utils.md5(user.getUserPassword()));

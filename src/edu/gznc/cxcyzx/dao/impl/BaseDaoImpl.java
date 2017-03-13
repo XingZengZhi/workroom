@@ -8,9 +8,11 @@ import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import edu.gznc.cxcyzx.dao.BaseDao;
 
+@Repository
 public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	private Class clazz;
 	

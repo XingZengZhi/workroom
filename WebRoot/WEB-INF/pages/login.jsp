@@ -61,18 +61,32 @@
 	</div>
 <script type="text/javascript">
 	$(function(){
-		var code ;
+		var flag = 0;
+		/* 与后台验证码对比 */
+		function submitCode(){
+			$.post("${pageContext.request.contextPath}/user_checkCode",{value:$("#checkCode").val()},function(data){
+				if(data == 1){
+					$("form").submit();
+				}else{
+					alert("验证码错误");
+				}
+			});
+		}
+		/* 刷新验证码 */
 		$("#co").click(function(){
 			$(this).prop("src","${pageContext.request.contextPath }/user_code?num="+Math.random());
 		});
 		$("button[type='submit']").click(function(){
-			$.post("${pageContext.request.contextPath}/user_checkCode",function(data){
-				code = data;
-			});
-			if($("#checkCode").val() != code){
-				alert("验证码错误");
-				return false;
+			submitCode();
+			return false;
+		});
+		/* 如果按下的为enter键，则进行登录 */
+		$(document).keypress(function(event){
+			var key = event.keyCode ? event.keyCode : event.whitch;
+			if(key == '13'){
+				submitCode();
 			}
+			return false;
 		});
 	});
 </script>

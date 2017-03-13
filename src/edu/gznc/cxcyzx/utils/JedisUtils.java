@@ -12,7 +12,7 @@ public class JedisUtils {
 		jedisPoolConfig = new JedisPoolConfig();
 		jedisPoolConfig.setMaxTotal(30);
 		jedisPoolConfig.setMaxIdle(8);
-		jedisPool = new JedisPool(jedisPoolConfig,"192.168.121.128");
+		jedisPool = new JedisPool(jedisPoolConfig,"192.168.121.128",6379);
 	}
 	
 	public static Jedis getJedis(){

@@ -2,11 +2,13 @@ package edu.gznc.cxcyzx.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 
 import edu.gznc.cxcyzx.dao.UserDao;
 import edu.gznc.cxcyzx.domain.Room;
 import edu.gznc.cxcyzx.domain.User;
 
+@Repository
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
 	// 用户登录

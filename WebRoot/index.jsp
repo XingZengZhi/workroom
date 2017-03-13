@@ -106,6 +106,8 @@
 						data-slide="next"><span
 						class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
+				
+				<!-- 工作室列表开始 -->
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-md-4">
 						<div class="thumbnail">
@@ -147,6 +149,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="col-md-4">
 						<div class="thumbnail">
@@ -188,6 +191,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="col-md-4">
 						<div class="thumbnail">
@@ -229,6 +233,9 @@
 						</div>
 					</div>
 				</div>
+				<!-- 工作室列表结束 -->
+				
+				<!-- 页脚 -->
 				<div class="row clearfix"
 					style="margin-top: 20px; border-top: 1px solid royalblue; padding-top: 10px;">
 					<div class="col-md-4 column">
@@ -257,6 +264,7 @@
 						</blockquote>
 					</div>
 				</div>
+				<!-- 页脚结束 -->
 			</div>
 		</div>
 	</div>

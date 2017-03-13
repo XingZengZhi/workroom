@@ -1,14 +1,14 @@
 package edu.gznc.cxcyzx.web.action;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,24 +19,20 @@ import edu.gznc.cxcyzx.domain.Room;
 import edu.gznc.cxcyzx.domain.User;
 import edu.gznc.cxcyzx.service.RoomService;
 import edu.gznc.cxcyzx.service.UserService;
-import edu.gznc.cxcyzx.utils.MD5Utils;
-import net.sf.json.JSONObject;
 
+@Controller
+@Scope("prototype")
 public class UserAction extends ActionSupport implements ModelDriven<User> {
 	private User user = new User();
+	private String ReelCode;
 	@Override
 	public User getModel() {
 		return user;
 	}
+	@Autowired
 	private UserService userService;
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
+	@Autowired
 	private RoomService roomService;
-	public void setRoomService(RoomService roomService) {
-		this.roomService = roomService;
-	}
-	
 	// 返回用户有关的页面
 	public String loginJsp(){// 登录页面
 		return "loginJsp";
@@ -79,22 +75,32 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		}
 		return NONE;
 	}
+//	获得验证码
 	public String code() throws Exception{ // 登录的验证码
 		ValidateCode code = new ValidateCode(100,25,4,10);
-		ActionContext.getContext().getSession().put("sessionCode", code.getCode());
+//		ActionContext.getContext().getSession().put("sessionCode", code.getCode());
+		ReelCode = code.getCode().toUpperCase();
 		code.write(ServletActionContext.getResponse().getOutputStream());
 		return NONE;
 	}
+//	检查验证码
 	public String checkCode() throws Exception{
-		ServletActionContext.getResponse().getWriter().print(ActionContext.getContext().getSession().get("sessionCode"));
+		String valueCode = ServletActionContext.getRequest().getParameter("value").toUpperCase();
+		if(ReelCode.equals(valueCode)){
+			ServletActionContext.getResponse().getWriter().print(1);
+		}else{
+			ServletActionContext.getResponse().getWriter().print(0);
+		}
 		return NONE;
 	}
+//	获取所有工作室
 	public String room() throws Exception{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().print(userService.findAllRoom());
 		return NONE;
 	}
+// 申请工作室
 	public String apply(){
 		System.out.println(user.getUserId());
 		User exiteUser = userService.findByUserId(user.getUserId());

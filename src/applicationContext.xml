@@ -46,16 +46,9 @@
 	</bean>
 	
 	<!-- 用户模块 -->
-	<bean id="userAction" class="edu.gznc.cxcyzx.web.action.UserAction" scope="prototype">
-		<property name="userService" ref="userService" />
-		<property name="roomService" ref="roomService" />
-	</bean>
-	<bean id="roomService" class="edu.gznc.cxcyzx.service.impl.RoomServiceImpl">
-		<property name="roomDao" ref="roomDao" />
-	</bean>
-	<bean id="userService" class="edu.gznc.cxcyzx.service.impl.UserServiceImpl">
-		<property name="userDao" ref="userDao" />
-	</bean>
+	<bean id="userAction" class="edu.gznc.cxcyzx.web.action.UserAction" />
+	<bean id="roomService" class="edu.gznc.cxcyzx.service.impl.RoomServiceImpl" />
+	<bean id="userService" class="edu.gznc.cxcyzx.service.impl.UserServiceImpl" />
 	<bean id="userDao" class="edu.gznc.cxcyzx.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -63,13 +56,11 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-
 	<!-- 配置事务管理器。 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
 	
 	<!-- 开启注解 配置 -->
-	<!-- <context:annotation-config/> -->
+	<context:annotation-config />
 </beans>

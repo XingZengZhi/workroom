@@ -19,6 +19,7 @@
 <script src="${pageContext.request.contextPath }/js/dropdown.js"></script>
 <script type="text/javascript">
 	$(function(){
+		// 返回所有工作室名字
 		$.post("${pageContext.request.contextPath}/user_room",function(data){
 			for(var i = 0;i<data.length;i++){
 				$("#dropDowns").append("<option value='"+data[i].roomId+"'>"+data[i].roomName+"</option>");
