@@ -19,11 +19,5 @@
         <property name="roomContactWay" type="java.lang.String">
             <column name="roomContactWay" />
         </property>
-        <set name="users" table="user" inverse="false" lazy="true">
-            <key>
-                <column name="roomId" />
-            </key>
-            <one-to-many class="edu.gznc.cxcyzx.domain.User" />
-        </set>
     </class>
 </hibernate-mapping>

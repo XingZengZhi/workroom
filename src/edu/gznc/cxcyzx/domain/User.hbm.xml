@@ -28,7 +28,7 @@
         <property name="userText" type="java.lang.String">
             <column name="userText" />
         </property>
-        <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room" fetch="join">
+        <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room">
             <column name="roomId" />
         </many-to-one>
     </class>

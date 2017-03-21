@@ -34,6 +34,24 @@
 	textarea{
 		resize:none;
 	}
+	select{
+		width:200px;
+		height:30px;
+		border:none;
+		border:1px solid #ccc;
+		border-radius:3px;
+		transition:all 0.1s;
+	}
+	select:focus{
+		-webkit-box-shadow:0 0 5px #94C6EE;
+		-ms-box-shadow:0 0 5px #94C6EE;
+		-moz-box-shadow:0 0 5px #94C6EE;
+		-o-box-shadow:0 0 5px #94C6EE;
+		box-shadow:0 0 5px #94C6EE;
+	}
+	option{
+		margin:5px;
+	}
 </style>
 </head>
 <body>

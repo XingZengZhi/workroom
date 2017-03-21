@@ -17,12 +17,25 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css">
 <script src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
-
+<style type="text/css">
+	#foot ul li a{
+		text-decoration:none;
+		color:white;
+		transition:all 0.5s;
+		-webkit-transition:all 0.5s;
+		-moz-transition:all 0.5s;
+		-ms-transition:all 0.5s;
+		-o-transition:all 0.5s;
+	}
+	 #foot ul li a:hover{
+		color:#00C1DE;
+	}
+</style>
 <script
 	src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
-	<!-- <script type="text/javascript">
+	<script type="text/javascript">
 		$(function(){
-			var name = "${exitUser.userName}";
+			/* var name = "${exitUser.userName}";
 			$(".modal-footer").click(function(){
 				$(".modal").css("display","none");
 				$(".fade").css("opacity","0");
@@ -30,9 +43,25 @@
 			if(name == ""){
 				$(".modal").css("display","block");
 				$(".fade").css("opacity","1");
-			}
+			} */
+			$.ajax({
+				type:"POST",
+				url:"${pageContext.request.contextPath}/user_room",
+				dataType:"json",
+				success:function(data){
+					/* 异步获取工作室的名字 */
+					$("div[class*='row'] h3").each(function(i, n){
+						$(n).text(data[i].roomName);
+					});
+					/* 异步获取工作室简介 */
+					$("div[class*='row'] p.title").each(function(i, n){
+						$(n).text(data[i].roomSum);
+					});
+				}
+			});
+			
 		});
-	</script> -->
+	</script>
 </head>
 <body>
 
@@ -113,8 +142,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image1.jpg" />
 							<div class="caption">
-								<h3>智能开发工作室</h3>
-								<p>为学生提供嵌入式智能设备开发平台，培养适应工业4.0时代需要的智能设备开发人才。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -126,8 +155,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image2.jpg" />
 							<div class="caption">
-								<h3>移动终端应用系统开发工作室</h3>
-								<p>Web系统开发、手机APP开发（Android、IOS）。通过校企合作，以项目驱动的方式提升学生综合能力。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -139,8 +168,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image3.jpg" />
 							<div class="caption">
-								<h3>视觉设计工作室</h3>
-								<p>Web系统开发、手机APP开发（Android、IOS）。通过校企合作，以项目驱动的方式提升学生综合能力。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -155,8 +184,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image1.jpg" />
 							<div class="caption">
-								<h3>泰迪大数据挖掘工作室</h3>
-								<p>为学生提供嵌入式智能设备开发平台，培养适应工业4.0时代需要的智能设备开发人才。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -168,8 +197,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image2.jpg" />
 							<div class="caption">
-								<h3>软件测试工作室</h3>
-								<p>为学生提供嵌入式智能设备开发平台，培养适应工业4.0时代需要的智能设备开发人才。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -181,8 +210,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image3.jpg" />
 							<div class="caption">
-								<h3>教育云平台开发工作室</h3>
-								<p>为学生提供嵌入式智能设备开发平台，培养适应工业4.0时代需要的智能设备开发人才。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -197,8 +226,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image1.jpg" />
 							<div class="caption">
-								<h3>教育大数据系统开发工作室</h3>
-								<p>为学生提供嵌入式智能设备开发平台，培养适应工业4.0时代需要的智能设备开发人才。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -210,8 +239,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image2.jpg" />
 							<div class="caption">
-								<h3>智能视屏分析系统开发工作室</h3>
-								<p>为学生提供嵌入式智能设备开发平台，培养适应工业4.0时代需要的智能设备开发人才。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -223,8 +252,8 @@
 						<div class="thumbnail">
 							<img alt="300x200" src="${pageContext.request.contextPath }/img/image3.jpg" />
 							<div class="caption">
-								<h3>智能设计开发工作室</h3>
-								<p>为学生提供嵌入式智能设备开发平台，培养适应工业4.0时代需要的智能设备开发人才。</p>
+								<h3></h3>
+								<p class="title"></p>
 								<p>
 									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
 										href="#">申请加入</a>
@@ -237,30 +266,30 @@
 				
 				<!-- 页脚 -->
 				<div class="row clearfix"
-					style="margin-top: 20px; border-top: 1px solid royalblue; padding-top: 10px;">
-					<div class="col-md-4 column">
+					style="color:white;background-color:#373D41;margin-top: 20px; border-top: 1px solid royalblue; padding-top: 10px;">
+					<div class="col-md-4 column" id="foot">
 						<ul>
-							<li>Lorem ipsum dolor sit amet</li>
-							<li>Consectetur adipiscing elit</li>
-							<li>Integer molestie lorem at massa</li>
-							<li>Facilisis in pretium nisl aliquet</li>
-							<li>Nulla volutpat aliquam velit</li>
-							<li>Faucibus porta lacus fringilla vel</li>
-							<li>Aenean sit amet erat nunc</li>
-							<li>Eget porttitor lorem</li>
+							<li><a href="">中心简介</a></li>
+							<li><a href="">历史成就</a></li>
+							<li><a href="">校园风光</a></li>
+							<li><a href="">网站地图</a></li>
+							<li>Copyright © 2013贵州师范学院数计学院</li>
+							<li>地址：贵州师范学院大学生创新创业中心</li>
 						</ul>
 					</div>
 					<div class="col-md-4 column">
 						<address>
-							<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br />
-							San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr>
+							<strong>Twitter, Inc.</strong>
+							<br /> 795 Folsom Ave, Suite 600<br />
+							San Francisco, CA 94107<br /> 
+							<abbr title="Phone">P:</abbr>
 							(123) 456-7890
 						</address>
 					</div>
 					<div class="col-md-4 column">
 						<blockquote>
 							<p>其实我们每个人的生活都是一个世界，即使最平凡的人也要为他生活的那个世界而奋斗。</p>
-							<small>路遥</small>
+							<small style="color:white;">路遥</small>
 						</blockquote>
 					</div>
 				</div>

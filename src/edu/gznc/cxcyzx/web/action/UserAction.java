@@ -102,7 +102,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 // 申请工作室
 	public String apply(){
-		System.out.println(user.getUserId());
 		User exiteUser = userService.findByUserId(user.getUserId());
 		Room room = roomService.findByRoomId(user.getRoomId());
 		exiteUser.setUserEmail(user.getUserEmail());
