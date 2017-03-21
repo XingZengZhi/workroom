@@ -57,6 +57,10 @@
 					$("div[class*='row'] p.title").each(function(i, n){
 						$(n).text(data[i].roomSum);
 					});
+					/* 异步获取工作室id */
+					$("div[class*='row'] p a.btn-primary").each(function(i, n){
+						$(n).prop("href","${pageContext.request.contextPath}/room_BackRoomPage?roomId=" + data[i].roomId);
+					});
 				}
 			});
 			
@@ -145,8 +149,8 @@
 								<h3></h3>
 								<p class="title"></p>
 								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
+									<a class="btn btn-primary" href="">详情</a> 
+									<a class="btn" href="">申请加入</a>
 								</p>
 							</div>
 						</div>

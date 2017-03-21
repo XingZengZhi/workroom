@@ -22,6 +22,9 @@
 			<result name="exit">/index.jsp</result>
 			<result name="registe">/index.jsp</result>
 		</action>
-		
+		<!-- 工作室模块 -->
+		<action name="room_*" method="{1}" class="roomAction">
+			<result name="success">/index.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -47,14 +47,17 @@
 	
 	<!-- 用户模块 -->
 	<bean id="userAction" class="edu.gznc.cxcyzx.web.action.UserAction" />
-	<bean id="roomService" class="edu.gznc.cxcyzx.service.impl.RoomServiceImpl" />
 	<bean id="userService" class="edu.gznc.cxcyzx.service.impl.UserServiceImpl" />
 	<bean id="userDao" class="edu.gznc.cxcyzx.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- 工作室模块 -->
+	<bean id="roomAction" class="edu.gznc.cxcyzx.web.action.RoomAction" />
+	<bean id="roomService" class="edu.gznc.cxcyzx.service.impl.RoomServiceImpl" />
 	<bean id="roomDao" class="edu.gznc.cxcyzx.dao.impl.RoomDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
 	
 	<!-- 配置事务管理器。 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
