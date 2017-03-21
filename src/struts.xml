@@ -24,7 +24,7 @@
 		</action>
 		<!-- 工作室模块 -->
 		<action name="room_*" method="{1}" class="roomAction">
-			<result name="success">/index.jsp</result>
+			<result name="success">/WEB-INF/pages/details.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -26,7 +26,6 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 	public String BackRoomPage(){
 		Integer roomId = Integer.valueOf(ServletActionContext.getRequest().getParameter("roomId"));
 		Room room = roomService.findByRoomId(roomId);
-		
 		System.out.println(room.getRoomName());
 		return "success";
 	}
