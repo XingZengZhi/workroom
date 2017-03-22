@@ -29,7 +29,7 @@
             <column name="userText" />
         </property>
         <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room">
-            <column name="roomId" />
+            <column name="userRoomId" />
         </many-to-one>
     </class>
 </hibernate-mapping>

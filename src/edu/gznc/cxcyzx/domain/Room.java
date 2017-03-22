@@ -10,7 +10,8 @@ public class Room {
 	private String roomSum;
 	private Date roomFoundTime;
 	private String roomContactWay;
-	
+	private Set<User> users = new HashSet<User>();
+	private Set<Article> articles = new HashSet<Article>();
 	public Integer getRoomId() {
 		return roomId;
 	}
@@ -41,4 +42,17 @@ public class Room {
 	public void setRoomContactWay(String roomContactWay) {
 		this.roomContactWay = roomContactWay;
 	}
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	public Set<Article> getArticles() {
+		return articles;
+	}
+	public void setArticles(Set<Article> articles) {
+		this.articles = articles;
+	}
+	
 }

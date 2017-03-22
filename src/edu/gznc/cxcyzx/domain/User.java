@@ -11,7 +11,6 @@ public class User {
 	private String userPassword;
 	private Date userRegistTime;
 	private String userText;
-	private Integer roomId;
 	private Room room;
 	
 	public long getUserId() {
@@ -68,11 +67,4 @@ public class User {
 	public void setUserText(String userText) {
 		this.userText = userText;
 	}
-	public Integer getRoomId() {
-		return roomId;
-	}
-	public void setRoomId(Integer roomId) {
-		this.roomId = roomId;
-	}
-	
 }

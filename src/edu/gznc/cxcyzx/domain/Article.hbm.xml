@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-22 13:40:15 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="edu.gznc.cxcyzx.domain.Article" table="article">
+        <id name="articleId" type="java.lang.Integer">
+            <column name="articleId" />
+            <generator class="native" />
+        </id>
+        <property name="articleTime" type="java.util.Date">
+            <column name="articleTime" />
+        </property>
+        <property name="articleText" type="java.lang.String">
+            <column name="articleText" />
+        </property>
+        <property name="articleTitle" type="java.lang.String">
+            <column name="articleTitle" />
+        </property>
+        <property name="articleResouce" type="java.lang.String">
+            <column name="articleResouce" />
+        </property>
+        <property name="articleFunction" type="java.lang.String">
+            <column name="articleFunction" />
+        </property>
+        <property name="articleProject" type="java.lang.String">
+            <column name="articleProject" />
+        </property>
+        <property name="articleTeam" type="java.lang.String">
+            <column name="articleTeam" />
+        </property>
+        <property name="articleEnterprise" type="java.lang.String">
+            <column name="articleEnterprise" />
+        </property>
+        <property name="articleTelphone" type="java.lang.String">
+            <column name="articleTelphone" />
+        </property>
+        <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room" column="articleForeignKey" />
+    </class>
+</hibernate-mapping>

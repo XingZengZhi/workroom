@@ -23,6 +23,7 @@ import edu.gznc.cxcyzx.service.UserService;
 @Controller
 @Scope("prototype")
 public class UserAction extends ActionSupport implements ModelDriven<User> {
+	private static final long serialVersionUID = 1L;
 	private User user = new User();
 	private String ReelCode;
 	@Override
@@ -102,13 +103,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 // 申请工作室
 	public String apply(){
-		User exiteUser = userService.findByUserId(user.getUserId());
+		/*User exiteUser = userService.findByUserId(user.getUserId());
 		Room room = roomService.findByRoomId(user.getRoomId());
 		exiteUser.setUserEmail(user.getUserEmail());
 		exiteUser.setUserStuID(user.getUserStuID());
 		exiteUser.setUserText(user.getUserText());
 		exiteUser.setRoom(room);
-		userService.updataUser(exiteUser);
+		userService.updataUser(exiteUser);*/
 		return NONE;
 	}
 
