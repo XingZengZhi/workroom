@@ -19,7 +19,7 @@
         <property name="roomContactWay" type="java.lang.String">
             <column name="roomContactWay" />
         </property>
-        <set name="users">
+        <set name="users" inverse="true">
         	<key column="userRoomId" />
         	<one-to-many class="edu.gznc.cxcyzx.domain.User" />
         </set>

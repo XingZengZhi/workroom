@@ -10,8 +10,10 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import edu.gznc.cxcyzx.domain.Article;
 import edu.gznc.cxcyzx.domain.Room;
+import edu.gznc.cxcyzx.domain.User;
 import edu.gznc.cxcyzx.service.ArticleService;
 import edu.gznc.cxcyzx.service.RoomService;
+import edu.gznc.cxcyzx.service.UserService;
 
 @Controller
 @Scope("prototype")
@@ -22,6 +24,8 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 	public Room getModel() {
 		return room;
 	}
+	@Autowired
+	private UserService userService;
 	@Autowired
 	private RoomService roomService;
 	@Autowired
@@ -34,5 +38,15 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 		Article article = articleService.findByArticleId(room.getRoomId());
 		ServletActionContext.getRequest().setAttribute("article", article);
 		return "success";
+	}
+	public String UserRoom(){
+		Integer uid = Integer.valueOf(ServletActionContext.getRequest().getParameter("userId"));
+		Integer rid = Integer.valueOf(ServletActionContext.getRequest().getParameter("roomId"));
+		User user = userService.findByUserId(uid);
+		Room room = roomService.findByRoomId(rid);
+		//设置用户所属的工作室
+		user.setRoom(room);
+		userService.save(user);
+		return "applySuccess";
 	}
 }

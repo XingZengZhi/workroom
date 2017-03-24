@@ -12,4 +12,5 @@ public interface UserService {
 	String findAllRoom();
 	User findByUserId(Serializable userId);
 	void updataUser(User user);
+	void save(User user);
 }

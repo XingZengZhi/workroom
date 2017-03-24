@@ -24,38 +24,54 @@
 
 </head>
 <body>
-	<div class="container">
-		<jsp:include page="/head.jsp" />
-		<div class="row clearfix" style="margin-top: 20px;">
-			<div class="col-md-8 column">
-				<img alt="140x140" src="${pageContext.request.contextPath }/img/image1.jpg" class="img-rounded" />
+	<div class="container-fluid">
+		<div class="row-fluid" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<jsp:include page="/head.jsp" />
 			</div>
-			<div class="col-md-4 column">
-				<form role="form"
-					action="${pageContext.request.contextPath }/user_login"
-					method="POST">
-					<div class="form-group">
-						<label for="exampleInputEmail1">用户名</label>
-						<c:if test="${not empty error }">
-						<label style="color:red;">${error }</label>
-						</c:if>
-						<input
-							placeholder="请输入用户名" type="text" name="userName"
-							class="form-control" id="exampleInputEmail1" />
+			<div class="row clearfix" style="margin-top: 20px;">
+				<div class="col-md-8 column">
+					<div class="jumbotron">
+						<h1>Hello, world!</h1>
+						<p>This is a template for a simple marketing or informational
+							website. It includes a large callout called the hero unit and
+							three supporting pieces of content. Use it as a starting point to
+							create something more unique.</p>
+						<p>
+							<a class="btn btn-primary btn-large" href="#">Learn more</a>
+						</p>
 					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">密码</label><input
-							placeholder="请输入密码" type="password" name="userPassword"
-							class="form-control" id="exampleInputPassword1" />
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1" style="display:block;">验证码</label><input
-							placeholder="输入验证码" type="text" id="checkCode"
-							class="form-control" style="width:100px;display:inline-block;" />
-						<img id="co" title="点击切换" alt="code" src="${pageContext.request.contextPath }/user_code" style="display:inline-block;"/>
-					</div>
-					<button type="submit" class="btn btn-default">登录</button>
-				</form>
+				</div>
+				<div class="col-md-4 column">
+					<form role="form"
+						action="${pageContext.request.contextPath }/user_login"
+						method="POST">
+						<div class="form-group">
+							<label for="exampleInputEmail1">用户名</label>
+							<c:if test="${not empty error }">
+							<label style="color:red;">${error }</label>
+							</c:if>
+							<input
+								placeholder="请输入用户名" type="text" name="userName"
+								class="form-control" id="exampleInputEmail1" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">密码</label><input
+								placeholder="请输入密码" type="password" name="userPassword"
+								class="form-control" id="exampleInputPassword1" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1" style="display:block;">验证码</label><input
+								placeholder="输入验证码" type="text" id="checkCode"
+								class="form-control" style="width:100px;display:inline-block;" />
+							<img id="co" title="点击切换" alt="code" src="${pageContext.request.contextPath }/user_code" style="display:inline-block;"/>
+						</div>
+						<button type="submit" class="btn btn-default">登录</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<jsp:include page="/workRoomFoot.jsp" />
 			</div>
 		</div>
 	</div>

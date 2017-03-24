@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Article {
 	private Integer articleId;
-	private Date articleTime;
+	private String articleTime;
 	private String articleText;
 	private String articleTitle;
 	private String articleResouce;
@@ -20,10 +20,10 @@ public class Article {
 	public void setArticleId(Integer articleId) {
 		this.articleId = articleId;
 	}
-	public Date getArticleTime() {
+	public String getArticleTime() {
 		return articleTime;
 	}
-	public void setArticleTime(Date articleTime) {
+	public void setArticleTime(String articleTime) {
 		this.articleTime = articleTime;
 	}
 	public String getArticleText() {

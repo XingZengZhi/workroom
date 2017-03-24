@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+.dropdown-menu li:hover {
+	cursor: pointer;
+}
+
+textarea {
+	resize: none;
+}
+
+select {
+	width: 300px;
+	height: 30px;
+	border: none;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+	-ms-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	-o-transition: all 0.1s;
+}
+
+select:focus {
+	-webkit-box-shadow: 0 0 5px #94C6EE;
+	-ms-box-shadow: 0 0 5px #94C6EE;
+	-moz-box-shadow: 0 0 5px #94C6EE;
+	-o-box-shadow: 0 0 5px #94C6EE;
+	box-shadow: 0 0 5px #94C6EE;
+}
+
+option {
+	text-align: center;
+	margin: 5px;
+}

@@ -15,7 +15,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import cn.dsna.util.images.ValidateCode;
-import edu.gznc.cxcyzx.domain.Room;
 import edu.gznc.cxcyzx.domain.User;
 import edu.gznc.cxcyzx.service.RoomService;
 import edu.gznc.cxcyzx.service.UserService;
@@ -101,16 +100,4 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		response.getWriter().print(userService.findAllRoom());
 		return NONE;
 	}
-// 申请工作室
-	public String apply(){
-		/*User exiteUser = userService.findByUserId(user.getUserId());
-		Room room = roomService.findByRoomId(user.getRoomId());
-		exiteUser.setUserEmail(user.getUserEmail());
-		exiteUser.setUserStuID(user.getUserStuID());
-		exiteUser.setUserText(user.getUserText());
-		exiteUser.setRoom(room);
-		userService.updataUser(exiteUser);*/
-		return NONE;
-	}
-
 }

@@ -6,14 +6,16 @@
 	<constant name="struts.i18n.ecoding" value="UTF-8"/>
 	<constant name="struts.action.extension" value="action,," />
 	<package name="workroom" extends="struts-default" namespace="/">
-		<!-- 权限拦截器 -->
-		<!-- <interceptors>
-			<interceptor name="privilegeInterceptor" class="edu.gznc.cxcyzx.web.interceptors.PrivilegeInterceptor"></interceptor>
-		</interceptors>
+		<!-- 导航栏跳转 -->
 		<global-results>
-			<result name="login">/WEB-INF/pages/login.jsp</result>
-		</global-results> -->
-		
+			<result name="index">/index.jsp</result>
+		</global-results>
+		<action name="nav_*" method="{1}" class="navAction">
+			<result name="apply">/apply.jsp</result>
+			<result name="show">/show.jsp</result>
+			<result name="summary">/summary.jsp</result>
+			<result name="message">/message.jsp</result>
+		</action>
 		<!-- 用户模块 -->
 		<action name="user_*" method="{1}" class="userAction">
 			<result name="success">/index.jsp</result>
@@ -25,6 +27,7 @@
 		<!-- 工作室模块 -->
 		<action name="room_*" method="{1}" class="roomAction">
 			<result name="success">/WEB-INF/pages/details.jsp</result>
+			<result name="applySuccess">/WEB-INF/pages/applySuccess.jsp</result>
 		</action>
 	</package>
 </struts>

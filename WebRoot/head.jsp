@@ -15,11 +15,11 @@
 <div class="row clearfix">
 	<div class="col-md-12 column">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="${pageContext.request.contextPath }/index.jsp">首页</a></li>
-			<li><a href="${pageContext.request.contextPath }/apply.jsp">加入申请</a></li>
-			<li><a href="${pageContext.request.contextPath }/show.jsp">成果展区</a></li>
-			<li><a href="${pageContext.request.contextPath }/summary.jsp">简介</a></li>
-			<li><a href="${pageContext.request.contextPath }/message.jsp">信息</a></li>
+			<li class="active"><a href="${pageContext.request.contextPath }/nav_index">首页</a></li>
+			<li><a href="${pageContext.request.contextPath }/nav_apply">加入申请</a></li>
+			<li><a href="${pageContext.request.contextPath }/nav_show">成果展区</a></li>
+			<li><a href="${pageContext.request.contextPath }/nav_summary">简介</a></li>
+			<li><a href="${pageContext.request.contextPath }/nav_message">信息</a></li>
 			<li class="dropdown pull-right"><c:if
 					test="${not empty exitUser}">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">${exitUser.userName }<strong

@@ -17,8 +17,16 @@
 <script src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
 </head>
 <body>
-	<div class="container">
-		<jsp:include page="head.jsp" />
+	<div class="container-fluid">
+		<div class="row-fluid" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<jsp:include page="head.jsp" />
+			</div>
+			
+			<div class="col-md-12">
+				<jsp:include page="workRoomFoot.jsp" />
+			</div>
+		</div>
 	</div>
 </body>
 </html>

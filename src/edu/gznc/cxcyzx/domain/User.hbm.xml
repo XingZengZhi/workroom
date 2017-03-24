@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="edu.gznc.cxcyzx.domain.User" table="user">
-        <id name="userId" type="long">
+        <id name="userId" type="java.lang.Integer">
             <column name="userId" />
             <generator class="native" />
         </id>
@@ -28,7 +28,7 @@
         <property name="userText" type="java.lang.String">
             <column name="userText" />
         </property>
-        <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room">
+        <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room" cascade="save-update">
             <column name="userRoomId" />
         </many-to-one>
     </class>

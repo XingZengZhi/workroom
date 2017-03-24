@@ -22,15 +22,7 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	public Article findByArticleId(Serializable articleId) {
-		Article article = articleDao.findById(articleId);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-		String date = sdf.format(article.getArticleTime());
-		try {
-			article.setArticleTime(sdf.parse(date));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return article;
+		return articleDao.findById(articleId);
 	}
 
 }

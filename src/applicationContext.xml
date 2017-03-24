@@ -45,7 +45,8 @@
 			</list>
 		</property>
 	</bean>
-	
+	<!-- 导航栏模块 -->
+	<bean id="navAction" class="edu.gznc.cxcyzx.web.action.NavAction" />
 	<!-- 用户模块 -->
 	<bean id="userAction" class="edu.gznc.cxcyzx.web.action.UserAction" />
 	<bean id="userService" class="edu.gznc.cxcyzx.service.impl.UserServiceImpl" />

@@ -3,7 +3,7 @@ package edu.gznc.cxcyzx.domain;
 import java.util.Date;
 
 public class User {
-	private long userId;
+	private Integer userId;
 	private String userName;
 	private String userSex;
 	private String userStuID;
@@ -13,10 +13,10 @@ public class User {
 	private String userText;
 	private Room room;
 	
-	public long getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {

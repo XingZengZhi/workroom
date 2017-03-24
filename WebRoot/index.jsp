@@ -31,19 +31,9 @@
 		color:#00C1DE;
 	}
 </style>
-<script
-	src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			/* var name = "${exitUser.userName}";
-			$(".modal-footer").click(function(){
-				$(".modal").css("display","none");
-				$(".fade").css("opacity","0");
-			});
-			if(name == ""){
-				$(".modal").css("display","block");
-				$(".fade").css("opacity","1");
-			} */
 			$.ajax({
 				type:"POST",
 				url:"${pageContext.request.contextPath}/user_room",
@@ -69,7 +59,7 @@
 </head>
 <body>
 
-	<div class="container">
+	<div class="container-fluid">
 	
 		<div class="modal fade" style="maring-top:50px;">
 			<div class="modal-dialog">
@@ -93,9 +83,11 @@
 			<!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal -->
-
-		<jsp:include page="/head.jsp" />
-		<div class="row clearfix" style="margin-top: 20px;">
+		
+		<div class="row-fluid" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<jsp:include page="head.jsp" />
+			</div>
 			<div class="col-md-12 column">
 				<div class="carousel slide" id="carousel-142221">
 					<ol class="carousel-indicators">
@@ -269,34 +261,10 @@
 				<!-- 工作室列表结束 -->
 				
 				<!-- 页脚 -->
-				<div class="row clearfix"
-					style="color:white;background-color:#373D41;margin-top: 20px; border-top: 1px solid royalblue; padding-top: 10px;">
-					<div class="col-md-4 column" id="foot">
-						<ul>
-							<li><a href="">中心简介</a></li>
-							<li><a href="">历史成就</a></li>
-							<li><a href="">校园风光</a></li>
-							<li><a href="">网站地图</a></li>
-							<li>Copyright © 2013贵州师范学院数计学院</li>
-							<li>地址：贵州师范学院大学生创新创业中心</li>
-						</ul>
-					</div>
-					<div class="col-md-4 column">
-						<address>
-							<strong>Twitter, Inc.</strong>
-							<br /> 795 Folsom Ave, Suite 600<br />
-							San Francisco, CA 94107<br /> 
-							<abbr title="Phone">P:</abbr>
-							(123) 456-7890
-						</address>
-					</div>
-					<div class="col-md-4 column">
-						<blockquote>
-							<p>其实我们每个人的生活都是一个世界，即使最平凡的人也要为他生活的那个世界而奋斗。</p>
-							<small style="color:white;">路遥</small>
-						</blockquote>
-					</div>
+				<div class="col-md-12">
+					<jsp:include page="workRoomFoot.jsp" />
 				</div>
+				
 				<!-- 页脚结束 -->
 			</div>
 		</div>

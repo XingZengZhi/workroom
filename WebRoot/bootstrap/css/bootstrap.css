@@ -1291,14 +1291,15 @@ p {
   margin: 0 0 10px;
 }
 .lead {
+  text-indent:2em;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.4;
 }
 @media (min-width: 768px) {
   .lead {
-    font-size: 21px;
+    font-size: 16px;
   }
 }
 small,
@@ -4148,6 +4149,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #337ab7;
 }
 .nav-stacked{
+	margin-top:20px;
 	border:1px solid #ccc;
 }
 .nav-stacked > li {
@@ -5117,9 +5119,28 @@ a.thumbnail.active {
   color: #2b542c;
 }
 .alert-info {
+  position:relative;
   color: #31708f;
   background-color: #d9edf7;
   border-color: #bce8f1;
+  border-radius:4px;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  -ms-border-radius:4px;
+  -o-border-radius:4px;
+  height:100px;
+}
+.alert-info h4{
+  position:absolute;
+  width:100px;
+  height:30px;
+  top:10px;
+  left:40px;
+}
+.alert-info p{
+	position:absolute;
+	top:60px;
+	left:40px;
 }
 .alert-info hr {
   border-top-color: #a6e1ec;
@@ -5889,7 +5910,10 @@ button.list-group-item-danger.active:focus {
   border-radius: 3px;
 }
 .close {
-  float: right;
+  /* float: right; */
+  position:absolute;
+  right:40px;
+  top:20px;
   font-size: 21px;
   font-weight: bold;
   line-height: 1;
