@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,13 @@
 				<jsp:include page="head.jsp" />
 			</div>
 			
+			<div class="col-md-12">
+				<s:form action="fileUpload" method="post" enctype="multipart/form-data">
+					<s:file name="upload" />
+					<s:submit value="上传" />
+				</s:form>
+				<s:a href="download?filename=2.jpg">图片下载</s:a>
+			</div>
 			<div class="col-md-12">
 				<jsp:include page="workRoomFoot.jsp" />
 			</div>

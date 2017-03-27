@@ -10,14 +10,11 @@
         <property name="userName" type="java.lang.String">
             <column name="userName" />
         </property>
-        <property name="userSex" type="java.lang.String">
-        	<column name="userSex" />
-        </property>
-         <property name="userStuID" type="java.lang.String">
+        <property name="userStuID" type="java.lang.String">
             <column name="userStuID" />
         </property>
-        <property name="userEmail" type="java.lang.String">
-        	<column name="userEmail" />
+        <property name="userPhone" type="java.lang.String">
+        	<column name="userPhone" />
         </property>
         <property name="userPassword" type="java.lang.String">
             <column name="userPassword" />

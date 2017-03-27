@@ -65,6 +65,8 @@
 	<bean id="articleDao" class="edu.gznc.cxcyzx.dao.impl.ArticleDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- 文件上传模块 -->
+	<bean id="fileAction" class="edu.gznc.cxcyzx.web.action.FileAction" />
 	
 	
 	<!-- 配置事务管理器。 -->

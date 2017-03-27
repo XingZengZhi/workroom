@@ -5,9 +5,8 @@ import java.util.Date;
 public class User {
 	private Integer userId;
 	private String userName;
-	private String userSex;
 	private String userStuID;
-	private String userEmail;
+	private String userPhone;
 	private String userPassword;
 	private Date userRegistTime;
 	private String userText;
@@ -25,12 +24,6 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserSex(){
-		return userSex;
-	}
-	public void setUserSex(String userSex){
-		this.userSex = userSex;
-	} 
 	public String getUserPassword() {
 		return userPassword;
 	}
@@ -55,11 +48,11 @@ public class User {
 	public void setUserStuID(String userStuID) {
 		this.userStuID = userStuID;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getUserPhone() {
+		return userPhone;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
 	public String getUserText() {
 		return userText;

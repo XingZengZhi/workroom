@@ -6,8 +6,9 @@ import edu.gznc.cxcyzx.domain.Room;
 import edu.gznc.cxcyzx.domain.User;
 
 public interface UserDao extends BaseDao<User>{
-	public User login(User user);
-	public boolean checkUser(String name);
-	public List<Room> findAllRoom();
-	public void save(User user);
+	User login(User user);
+	boolean checkUser(String name);
+	List<Room> findAllRoom();
+	void save(User user);
+	void update(User user);
 }

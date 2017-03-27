@@ -13,55 +13,63 @@
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath }/img/sj.ico">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.min.css">
+	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css">
+	href="${pageContext.request.contextPath }/css/bannerList.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/index.css">
 <script src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
-<style type="text/css">
-	#foot ul li a{
-		text-decoration:none;
-		color:white;
-		transition:all 0.5s;
-		-webkit-transition:all 0.5s;
-		-moz-transition:all 0.5s;
-		-ms-transition:all 0.5s;
-		-o-transition:all 0.5s;
-	}
-	 #foot ul li a:hover{
-		color:#00C1DE;
-	}
-</style>
-<script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			$.ajax({
-				type:"POST",
-				url:"${pageContext.request.contextPath}/user_room",
-				dataType:"json",
-				success:function(data){
-					/* 异步获取工作室的名字 */
-					$("div[class*='row'] h3").each(function(i, n){
-						$(n).text(data[i].roomName);
-					});
-					/* 异步获取工作室简介 */
-					$("div[class*='row'] p.title").each(function(i, n){
-						$(n).text(data[i].roomSum);
-					});
-					/* 异步获取工作室id */
-					$("div[class*='row'] p a.btn-primary").each(function(i, n){
-						$(n).prop("href","${pageContext.request.contextPath}/room_BackRoomPage?roomId=" + data[i].roomId);
-					});
-				}
-			});
-			
+<script src="${pageContext.request.contextPath }/js/bannerList.js"></script>
+<script
+	src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/*=======================
+		调用方法：
+		传递参数方法如下：
+		对象1：banner最大容器====================必填
+		对象2：banner======>按钮父容器============必填
+		对象3，4：banner====>左右按钮对象名===========必填
+		对象5：banner滚动时间==================>可选项=======>默认为2000
+		对象6：是否需要自动轮播需要==========true============不需要false:必填
+		=============================*/
+		bannerListFn($(".banner"), $(".img-btn-list"), $(".left-btn"),
+				$(".right-btn"), 2000, true);
+
+		$.ajax({
+			type : "POST",
+			url : "${pageContext.request.contextPath}/user_room",
+			dataType : "json",
+			success : function(data) {
+				/* 异步获取工作室的名字 */
+				$("div[class*='row'] h3").each(function(i, n) {
+					$(n).text(data[i].roomName);
+				});
+				/* 异步获取工作室简介 */
+				$("div[class*='row'] p.title").each(function(i, n) {
+					$(n).text(data[i].roomSum);
+				});
+				/* 异步获取工作室id */
+				$("div[class*='row'] p a.btn-primary").each(
+						function(i, n) {
+							$(n).prop(
+									"href",
+									"${pageContext.request.contextPath}/room_BackRoomPage?roomId="
+											+ data[i].roomId);
+						});
+				/* 根据工作室id设置需要加入的工作室 */
+				$("div[class*='row'] p a#sq").each(function(i, n){
+					$(n).prop("href","${pageContext.request.contextPath}/room_GiveId?roomId=" + data[i].roomId);
+				});
+			}
 		});
-	</script>
+
+	});
+</script>
 </head>
 <body>
-
 	<div class="container-fluid">
-	
-		<div class="modal fade" style="maring-top:50px;">
+		<div class="modal fade" style="maring-top: 50px;">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -83,188 +91,159 @@
 			<!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal -->
-		
+
 		<div class="row-fluid" style="margin-top: 20px;">
 			<div class="col-md-12">
 				<jsp:include page="head.jsp" />
 			</div>
 			<div class="col-md-12 column">
-				<div class="carousel slide" id="carousel-142221">
-					<ol class="carousel-indicators">
-						<li data-slide-to="0" data-target="#carousel-142221"></li>
-						<li data-slide-to="1" data-target="#carousel-142221"></li>
-						<li data-slide-to="2" data-target="#carousel-142221"></li>
-					</ol>
-					<div class="carousel-inner">
-						<div class="item active left">
-							<img src="${pageContext.request.contextPath }/img/new.png" />
-							<div class="carousel-caption">
-								<h4>First Thumbnail label</h4>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam. Donec id elit non mi porta gravida at eget metus. Nullam
-									id dolor id nibh ultricies vehicula ut id elit.</p>
-							</div>
-						</div>
-						<div class="item next left">
-							<img alt="" src="${pageContext.request.contextPath }/img/new2.png" />
-							<div class="carousel-caption">
-								<h4>Second Thumbnail label</h4>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam. Donec id elit non mi porta gravida at eget metus. Nullam
-									id dolor id nibh ultricies vehicula ut id elit.</p>
-							</div>
-						</div>
-						<div class="item">
-							<img alt="" src="${pageContext.request.contextPath }/img/new3.png" />
-							<div class="carousel-caption">
-								<h4>Third Thumbnail label</h4>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam. Donec id elit non mi porta gravida at eget metus. Nullam
-									id dolor id nibh ultricies vehicula ut id elit.</p>
-							</div>
-						</div>
-					</div>
-					<a class="left carousel-control" href="#carousel-142221"
-						data-slide="prev"><span
-						class="glyphicon glyphicon-chevron-left"></span></a> <a
-						class="right carousel-control" href="#carousel-142221"
-						data-slide="next"><span
-						class="glyphicon glyphicon-chevron-right"></span></a>
+				<div class="banner">
+					<ul class="">
+						<li><a href=""><img
+								src="${pageContext.request.contextPath }/barnerimg/banner1.png"></a></li>
+						<li><a href=""><img
+								src="${pageContext.request.contextPath }/barnerimg/banner2.png"></a></li>
+						<li><a href=""><img
+								src="${pageContext.request.contextPath }/barnerimg/banner3.png"></a></li>
+						<li><a href=""><img
+								src="${pageContext.request.contextPath }/barnerimg/banner4.png"></a></li>
+					</ul>
+					<div class="left-btn"></div>
+					<div class="right-btn"></div>
+					<div class="img-btn-list"></div>
 				</div>
-				
+
 				<!-- 工作室列表开始 -->
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image1.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image1.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
 								<p>
-									<a class="btn btn-primary" href="">详情</a> 
-									<a class="btn" href="">申请加入</a>
+									<a class="btn btn-primary" href="">简介</a> <a class="btn"
+										href="" id="sq">申请加入</a>
 								</p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image2.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image2.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
 								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
+									<a class="btn btn-primary" href="#">简介</a> <a class="btn"
+										href="#" id="sq">申请加入</a>
 								</p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image3.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image3.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
 								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-4">
-						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image1.jpg" />
-							<div class="caption">
-								<h3></h3>
-								<p class="title"></p>
-								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image2.jpg" />
-							<div class="caption">
-								<h3></h3>
-								<p class="title"></p>
-								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image3.jpg" />
-							<div class="caption">
-								<h3></h3>
-								<p class="title"></p>
-								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
+									<a class="btn btn-primary" href="#">简介</a> <a class="btn"
+										href="#" id="sq">申请加入</a>
 								</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image1.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image1.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
 								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
+									<a class="btn btn-primary" href="#">简介</a> <a class="btn"
+										href="#" id="sq">申请加入</a>
 								</p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image2.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image2.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
 								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
+									<a class="btn btn-primary" href="#">简介</a> <a class="btn"
+										href="#" id="sq">申请加入</a>
 								</p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img alt="300x200" src="${pageContext.request.contextPath }/img/image3.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image3.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
 								<p>
-									<a class="btn btn-primary" href="#">详情</a> <a class="btn"
-										href="#">申请加入</a>
+									<a class="btn btn-primary" href="#">简介</a> <a class="btn"
+										href="#" id="sq">申请加入</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="${pageContext.request.contextPath }/img/image1.jpg" />
+							<div class="caption">
+								<h3></h3>
+								<p class="title"></p>
+								<p>
+									<a class="btn btn-primary" href="#">简介</a> <a class="btn"
+										href="#" id="sq">申请加入</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="${pageContext.request.contextPath }/img/image2.jpg" />
+							<div class="caption">
+								<h3></h3>
+								<p class="title"></p>
+								<p>
+									<a class="btn btn-primary" href="#">简介</a> <a class="btn"
+										href="#" id="sq">申请加入</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="${pageContext.request.contextPath }/img/image3.jpg" />
+							<div class="caption">
+								<h3></h3>
+								<p class="title"></p>
+								<p>
+									<a class="btn btn-primary" href="#">简介</a> <a class="btn"
+										href="#" id="sq">申请加入</a>
 								</p>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- 工作室列表结束 -->
-				
 				<!-- 页脚 -->
 				<div class="col-md-12">
 					<jsp:include page="workRoomFoot.jsp" />
 				</div>
-				
 				<!-- 页脚结束 -->
 			</div>
 		</div>

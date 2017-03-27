@@ -12,7 +12,7 @@
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath }/img/sj.ico">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.min.css">
+	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/apply.css">
 <script src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
 <script src="${pageContext.request.contextPath }/js/dropdown.js"></script>
@@ -30,6 +30,24 @@ $(function(){
 		if("${exitUser.userName}" == ""){
 			alert("请先登录！");
 			return false;
+		}else{
+			//更新actionHref
+			actionHref = $("form").attr("action");
+			/* 判断学号是否为空 */
+			if($("#userStuID").text() != ""){
+				actionHref = actionHref + "&userStuID=" + $("#userStuID").text();
+			}
+			/* 判断邮箱是否为空 */
+			if($("#userPhone").text() != ""){
+				/* 开始手机号校验，如果校验通过才能进行actionHref拼接 */
+				actionHref = actionHref + "&userPhone=" + $("#userPhone").text();
+			}
+			//判断申请缘由不能为空
+			if($("#userText").text() != ""){
+				actionHref = actionHref + "&userText=" + $("#userText").text();
+			}
+			//设置新actionHref
+			$("form").attr("action",actionHref);
 		}
 	}); 
 	//选中工作室时将option至为selected状态
@@ -38,6 +56,21 @@ $(function(){
 		var roomId = $(this).find("option:checked").attr("value");
 		$("form").attr("action",actionHref + "&roomId=" + roomId);
 	});
+	//根据首页发送的roomId自动选择下拉选项中的值
+	var roomid = "${roomId}";
+	//用window.setTimeout解决延迟读取roomid值的问题
+	window.setTimeout(function(){
+		if(roomid != ""){
+			$("#dropDowns option").each(function(i, n){
+				if($(n).attr("value") == roomid){
+					$(n).attr("selected",true);
+				}
+			});
+			//设置roomid
+			$("form").attr("action",actionHref + "&roomId=" + roomid);
+		}
+	}, 100);
+	
 });
 </script>
 </head>
@@ -47,34 +80,37 @@ $(function(){
 			<div class="col-md-12">
 				<jsp:include page="head.jsp" />
 			</div>
-			<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<form action="${pageContext.request. contextPath}/room_UserRoom?userId=${exitUser.userId }" method="POST">
-					<input type="hidden" name="userId" value="${exitUser.userId }" />
+				<blockquote id="blockquoteTop">
+					<p>申请信息填写</p>
+				</blockquote>
+			</div>
+			<div class="col-md-4">
+				<form style="margin-top:70px;" 
+						action="${pageContext.request. contextPath}/room_UserRoom?userId=${exitUser.userId }" method="POST">
 					<div class="form-group">
 						<label for="exampleInputEmail1">申请人</label> <input type="text"
-							class="form-control"
-							disabled="false" value="${exitUser.userName }">
+							class="form-control" value="${exitUser.userName }" readonly="readonly">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">学号</label> <input type="text"
-							class="form-control" placeholder="填写学号" name="userStuID">
+							class="form-control" id="userStuID" placeholder="学号" name="userStuID">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">邮箱</label> <input type="text"
-							class="form-control" placeholder="请误填写无效的邮箱" name="userEmail" />
+						<label for="exampleInputPassword1">手机号</label> <input type="text"
+							class="form-control" id=""userPhone"" placeholder="手机号" name="userPhone" />
 					</div>
 					<div class="btn-group form-group">
 						<label>工作室</label><br>
 						<select id="dropDowns" name="room">
-							<option>--------请选择工作室--------</option>
+							<option>请选择工作室</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">申请缘由</label>
-						<textarea rows="5" cols="70" placeholder="不能超过200字" name="userText"></textarea>
+						<textarea rows="8" cols="50" id="userText" placeholder="不能超过200字" name="userText"></textarea>
 					</div>
-					<button type="submit" class="btn btn-default">提交</button>
+					<button type="submit" class="btn btn-primary">确认并提交</button>
 				</form>
 			</div>
 			<div class="col-md-4"></div>

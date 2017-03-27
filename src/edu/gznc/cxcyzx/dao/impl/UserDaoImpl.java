@@ -34,5 +34,9 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 		List<Room> list = (List<Room>) this.getHibernateTemplate().find("from Room");
 		return list;
 	}
+	@Override
+	public void update(User user) {
+		super.update(user);
+	}
 
 }

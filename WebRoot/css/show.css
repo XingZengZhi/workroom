@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+.thumbnails li {
+	list-style: none;
+}
+
+.search-query {
+	border: none;
+	border: 1px solid #ccc;
+	outline: none;
+	padding-left: 10px;
+	height: 35px;
+	border-radius: 5px;
+}
+
+.search-query:focus {
+	border: 1px solid #337AB7;
+}
+
+.form-search {
+	margin: 10px auto;
+}
+
+.form-search .btn {
+	background-color: #337AB7;
+	color: white;
+}
+
+.thumbnails li .thumbnail {
+	box-shadow: 0 5px 10px #CCC;
+}

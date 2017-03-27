@@ -11,6 +11,6 @@ public interface UserService {
 	boolean checkUser(String name);
 	String findAllRoom();
 	User findByUserId(Serializable userId);
-	void updataUser(User user);
+	void update(User user);
 	void save(User user);
 }
