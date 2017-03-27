@@ -35,6 +35,14 @@ $(function(){
 			actionHref = $("form").attr("action");
 			/* 判断学号是否为空 */
 			if($("#userStuID").val() != ""){
+				
+				var reg = /^\d{13}$/;
+				var stuid = document.getElementById("userStuID").value();
+				if(!reg.test(stuid)){
+					alert("学号有误");
+					return false;
+				}
+				
 				actionHref = actionHref + "&userStuID=" + $("#userStuID").text();
 			}else{
 				alert("请填写学号！");
@@ -42,14 +50,16 @@ $(function(){
 			}
 			/* 判断手机号是否为空 */
 			if($("#userPhone").val() != ""){
-				var reg = /\d{3}-\d{8}|\d{4}-\{7,8}/;
+				
+				var reg = /^1[34578]\d{9}$/;
+				var phone = document.getElementById("userPhone").value();
 				/*开始手机号校验，如果校验通过才能进行actionHref拼接 */
-				if(reg.test($("#userPhone").val())){
-					actionHref = actionHref + "&userPhone=" + $("#userPhone").val();
-				}else{
+				if(!reg.test(phone)){
 					alert("你手机号有误！");
 					return false;
 				}
+				
+				actionHref = actionHref + "&userPhone=" + $("#userPhone").val();
 			}else{
 				alert("请填写手机号！");
 				return false;

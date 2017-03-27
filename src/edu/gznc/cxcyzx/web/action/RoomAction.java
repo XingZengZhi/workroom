@@ -41,8 +41,14 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 	}
 	//用户申请工作室
 	public String UserRoom(){
-		Integer uid = Integer.valueOf(ServletActionContext.getRequest().getParameter("userId"));
-		Integer rid = Integer.valueOf(ServletActionContext.getRequest().getParameter("roomId"));
+		Integer uid = null;
+		Integer rid = null;
+		if(ServletActionContext.getRequest().getParameter("userId") != null){
+			uid = Integer.valueOf(ServletActionContext.getRequest().getParameter("userId"));
+		}
+		if(ServletActionContext.getRequest().getParameter("roomId") != null){
+			rid = Integer.valueOf(ServletActionContext.getRequest().getParameter("roomId"));
+		}
 		String userStuID = ServletActionContext.getRequest().getParameter("userStuID");
 		String userPhone = ServletActionContext.getRequest().getParameter("userPhone");
 		String userText = ServletActionContext.getRequest().getParameter("userText");
