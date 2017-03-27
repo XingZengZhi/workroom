@@ -34,17 +34,32 @@ $(function(){
 			//更新actionHref
 			actionHref = $("form").attr("action");
 			/* 判断学号是否为空 */
-			if($("#userStuID").text() != ""){
+			if($("#userStuID").val() != ""){
 				actionHref = actionHref + "&userStuID=" + $("#userStuID").text();
+			}else{
+				alert("请填写学号！");
+				return false;
 			}
-			/* 判断邮箱是否为空 */
-			if($("#userPhone").text() != ""){
-				/* 开始手机号校验，如果校验通过才能进行actionHref拼接 */
-				actionHref = actionHref + "&userPhone=" + $("#userPhone").text();
+			/* 判断手机号是否为空 */
+			if($("#userPhone").val() != ""){
+				var reg = /\d{3}-\d{8}|\d{4}-\{7,8}/;
+				/*开始手机号校验，如果校验通过才能进行actionHref拼接 */
+				if(reg.test($("#userPhone").val())){
+					actionHref = actionHref + "&userPhone=" + $("#userPhone").val();
+				}else{
+					alert("你手机号有误！");
+					return false;
+				}
+			}else{
+				alert("请填写手机号！");
+				return false;
 			}
 			//判断申请缘由不能为空
-			if($("#userText").text() != ""){
-				actionHref = actionHref + "&userText=" + $("#userText").text();
+			if($("#userText").val() != ""){
+				actionHref = actionHref + "&userText=" + $("#userText").val();
+			}else{
+				alert("请填写申请缘由！");
+				return false;
 			}
 			//设置新actionHref
 			$("form").attr("action",actionHref);
