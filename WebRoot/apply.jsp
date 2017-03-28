@@ -35,14 +35,6 @@ $(function(){
 			actionHref = $("form").attr("action");
 			/* 判断学号是否为空 */
 			if($("#userStuID").val() != ""){
-				
-				var reg = /^\d{13}$/;
-				var stuid = document.getElementById("userStuID").value();
-				if(!reg.test(stuid)){
-					alert("学号有误");
-					return false;
-				}
-				
 				actionHref = actionHref + "&userStuID=" + $("#userStuID").text();
 			}else{
 				alert("请填写学号！");
@@ -50,18 +42,15 @@ $(function(){
 			}
 			/* 判断手机号是否为空 */
 			if($("#userPhone").val() != ""){
-				
-				var reg = /^1[34578]\d{9}$/;
-				var phone = document.getElementById("userPhone").value();
 				/*开始手机号校验，如果校验通过才能进行actionHref拼接 */
-				if(!reg.test(phone)){
-					alert("你手机号有误！");
-					return false;
-				}
-				
 				actionHref = actionHref + "&userPhone=" + $("#userPhone").val();
 			}else{
 				alert("请填写手机号！");
+				return false;
+			}
+			//判断是否选择了工作室
+			if(!$("#dropDowns").find("option:gt(0):checked").prop("value") != ""){
+				alert("请选择工作室！");
 				return false;
 			}
 			//判断申请缘由不能为空
@@ -123,7 +112,7 @@ $(function(){
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">手机号</label> <input type="text"
-							class="form-control" id=""userPhone"" placeholder="手机号" name="userPhone" />
+							class="form-control" id="userPhone" placeholder="手机号" name="userPhone" />
 					</div>
 					<div class="btn-group form-group">
 						<label>工作室</label><br>

@@ -61,7 +61,7 @@
 	</bean>
 	<!-- 文章模块 -->
 	<bean id="articleAction" class="edu.gznc.cxcyzx.web.action.ArticleAction" />
-	<bean id="articleService" class="edu.gznc.cxcyzx.service.impl.ArticleServiceImpl"></bean>
+	<bean id="articleService" class="edu.gznc.cxcyzx.service.impl.ArticleServiceImpl" />
 	<bean id="articleDao" class="edu.gznc.cxcyzx.dao.impl.ArticleDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>

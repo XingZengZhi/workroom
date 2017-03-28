@@ -27,10 +27,28 @@
 			dataType:"json",
 			success:function(data){
 				for(var i = 0;i<data.length;i++){
-					$(".nav-stacked").append("<li><a href=''>" + data[i].roomName + "</a></li>");
+					$(".nav-stacked").append("<li><a name='"+ data[i].roomId +"'>" + data[i].roomName + "</a></li>");
 				}
 			}
 		});
+		//异步获取所有文章
+		$.post("${pageContext.request.contextPath}/article_returnAllArticle",function(data){
+			for(var i = 0;i<data.length;i++){
+				$(".thumbnails").append("<li class='col-md-4'>" +
+											"<div class='thumbnail'>" +
+												"<img src='${pageContext.request.contextPath }/img/image1.jpg' />" +
+												"<div class='caption'>" +
+													"<h3>"+ data[i].articleTitle +"</h3>" +
+													"<p id='text'>"+ data[i].articleText +"</p>" +
+													"<p>" +
+														"<a class='btn btn-primary' href=''>"+"浏览</a>" +
+														"<a class='btn' href='#'>"+"分享</a>" +
+													"</p>" +
+												"</div>" +
+											"</div>" +
+									    "</li>");
+			}
+		},"json");
 	});
 </script>
 </head>
@@ -40,77 +58,43 @@
 			<div class="col-md-12">
 				<jsp:include page="head.jsp" />
 			</div>
-
+			<!-- 左侧工作室栏列表 -->
 			<div class="col-md-3 column">
 				<ul class="nav nav-pills nav-stacked">
 				</ul>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						//左侧栏绑定点击
+						$(".nav-stacked li a").click(function(){
+							alert(1);
+						});
+					});
+				</script>
 			</div>
+			<!-- 右侧信息展示 -->
 			<div class="col-md-9" style="margin-top: 20px;">
 				<div class="tabbable" id="tabs-77207">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#panel-706309" data-toggle="tab">第一部分</a>
+						<li class="active"><a href="#panel-706309" data-toggle="tab">文章预览</a>
 						</li>
-						<li><a href="#panel-187352" data-toggle="tab">第二部分</a></li>
+						<li><a href="#panel-187352" data-toggle="tab">视频分享</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="panel-706309">
 							<!-- 文章搜索 -->
 							<form class="form-search form-inline">
 								<input class="input-medium search-query" type="text" />
-								<button type="submit" class="btn">查找</button>
+								<button type="submit" class="btn">查找文章</button>
 							</form>
-
 							<ul class="thumbnails" style="margin-left: -55px;">
-								<li class="col-md-4">
-									<div class="thumbnail">
-										<img src="${pageContext.request.contextPath }/img/image1.jpg" />
-										<div class="caption">
-											<h3>冯诺尔曼结构</h3>
-											<p>
-												也称普林斯顿结构，是一种将程序指令存储器和数据存储器合并在一起的存储器结构。程序指令存储地址和数据存储地址指向同一个存储器的不同物理位置。
-											</p>
-											<p>
-												<a class="btn btn-primary" href="#">浏览</a> <a class="btn"
-													href="#">分享</a>
-											</p>
-										</div>
-									</div>
-								</li>
-								<li class="col-md-4">
-									<div class="thumbnail">
-										<img src="${pageContext.request.contextPath }/img/image1.jpg" />
-										<div class="caption">
-											<h3>哈佛结构</h3>
-											<p>
-												哈佛结构是一种将程序指令存储和数据存储分开的存储器结构，它的主要特点是将程序和数据存储在不同的存储空间中，进行独立编址。</p>
-											<p>
-												<a class="btn btn-primary" href="#">浏览</a> <a class="btn"
-													href="#">分享</a>
-											</p>
-										</div>
-									</div>
-								</li>
-								<li class="col-md-4">
-									<div class="thumbnail">
-										<img src="${pageContext.request.contextPath }/img/image1.jpg" />
-										<div class="caption">
-											<h3>改进型哈佛结构</h3>
-											<p>
-												改进型的哈佛结构具有一条独立的地址总线和一条独立的数据总线，两条总线由程序存储器和数据存储器分时复用，使结构更紧凑。</p>
-											<p>
-												<a class="btn btn-primary" href="#">浏览</a> <a class="btn"
-													href="#">分享</a>
-											</p>
-										</div>
-									</div>
-								</li>
 							</ul>
 						</div>
+						
 						<div class="tab-pane" id="panel-187352">
 							<!-- 视频搜索 -->
 							<form class="form-search form-inline">
 								<input class="input-medium search-query" type="text" />
-								<button type="submit" class="btn">查找</button>
+								<button type="submit" class="btn">查找视频</button>
 							</form>
 
 							<div class="media">

@@ -35,6 +35,6 @@
         <property name="articleTelphone" type="java.lang.String">
             <column name="articleTelphone" />
         </property>
-        <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room" column="articleForeignKey" />
+        <many-to-one name="room" class="edu.gznc.cxcyzx.domain.Room" cascade="save-update" column="articleForeignKey" />
     </class>
 </hibernate-mapping>

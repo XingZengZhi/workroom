@@ -1,5 +1,10 @@
 package edu.gznc.cxcyzx.web.action;
 
+import java.io.IOException;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -14,6 +19,10 @@ import edu.gznc.cxcyzx.domain.User;
 import edu.gznc.cxcyzx.service.ArticleService;
 import edu.gznc.cxcyzx.service.RoomService;
 import edu.gznc.cxcyzx.service.UserService;
+import edu.gznc.cxcyzx.utils.JedisUtils;
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
+import redis.clients.jedis.Jedis;
 
 @Controller
 @Scope("prototype")
@@ -72,5 +81,25 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 		ServletActionContext.getRequest().setAttribute("roomId", ServletActionContext.getRequest().getParameter("roomId"));
 		return "apply";
 	}
-	
+	/*根据工作室id查询相关的文章*/
+	public String roomArticle(){
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setCharacterEncoding("UTF-8");
+		String roomid = ServletActionContext.getRequest().getParameter("roomid");
+		Room room = roomService.findByRoomId(Integer.valueOf(roomid));
+		String articleRoom = "article" + roomid; // 保存不同工作室下的文章
+		Jedis jedis = JedisUtils.getJedis();
+		if(jedis.get(articleRoom) == null){
+			Set<Article> articles =  room.getArticles();
+			JsonConfig config = new JsonConfig();
+			config.setExcludes(new String[]{"articleTelphone","articleTeam","articleResouce","articleEnterprise","articleFunction","articleProject","room"});
+			jedis.set("article" + roomid, JSONArray.fromObject(articles, config).toString());
+		}
+		try {
+			response.getWriter().print(jedis.get(articleRoom));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return NONE;
+	}
 }

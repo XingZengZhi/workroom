@@ -14,10 +14,10 @@
 		<global-results>
 			<result name="index">/index.jsp</result>
 			<result name="apply">/apply.jsp</result>
+			<result name="show">/show.jsp</result>
 		</global-results>
 		<!-- 导航栏跳转 -->
 		<action name="nav_*" method="{1}" class="navAction">
-			<result name="show">/show.jsp</result>
 			<result name="summary">/summary.jsp</result>
 			<result name="message">/message.jsp</result>
 		</action>
@@ -33,6 +33,10 @@
 		<action name="room_*" method="{1}" class="roomAction">
 			<result name="success">/WEB-INF/pages/details.jsp</result>
 			<result name="applySuccess">/WEB-INF/pages/applySuccess.jsp</result>
+		</action>
+		<!-- 文章模块 -->
+		<action name="article_*" method="{1}" class="articleAction">
+			
 		</action>
 		<!-- 文件上传模块 -->
 		<action name="fileUpload" method="fileUpload" class="fileAction">

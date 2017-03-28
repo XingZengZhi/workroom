@@ -1,7 +1,5 @@
 package edu.gznc.cxcyzx.domain;
 
-import java.util.Date;
-
 public class Article {
 	private Integer articleId;
 	private String articleTime;

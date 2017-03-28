@@ -23,7 +23,7 @@
         	<key column="userRoomId" />
         	<one-to-many class="edu.gznc.cxcyzx.domain.User" />
         </set>
-        <set name="articles">
+        <set name="articles" inverse="true">
         	<key column="articleForeignKey" />
         	<one-to-many class="edu.gznc.cxcyzx.domain.Article" />
         </set>
