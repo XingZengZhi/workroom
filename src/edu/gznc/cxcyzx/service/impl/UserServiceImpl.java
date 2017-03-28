@@ -51,7 +51,9 @@ public class UserServiceImpl implements UserService {
 			List<Room> list = userDao.findAllRoom();
 			jedis.set("roomList",JSONArray.fromObject(list).toString());
 		}
-		return jedis.get("roomList");
+		String roomlist = jedis.get("roomList");
+		jedis.close();
+		return roomlist;
 	}
 
 

@@ -84,7 +84,6 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 	/*根据工作室id查询相关的文章*/
 	public String roomArticle(){
 		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setCharacterEncoding("UTF-8");
 		String roomid = ServletActionContext.getRequest().getParameter("roomid");
 		Room room = roomService.findByRoomId(Integer.valueOf(roomid));
 		String articleRoom = "article" + roomid; // 保存不同工作室下的文章
@@ -93,10 +92,12 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 			Set<Article> articles =  room.getArticles();
 			JsonConfig config = new JsonConfig();
 			config.setExcludes(new String[]{"articleTelphone","articleTeam","articleResouce","articleEnterprise","articleFunction","articleProject","room"});
-			jedis.set("article" + roomid, JSONArray.fromObject(articles, config).toString());
+			jedis.set(articleRoom, JSONArray.fromObject(articles, config).toString());
 		}
 		try {
+			response.setCharacterEncoding("UTF-8");
 			response.getWriter().print(jedis.get(articleRoom));
+			jedis.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
