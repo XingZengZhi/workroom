@@ -14,12 +14,12 @@
 </script>
 <div class="row clearfix">
 	<div class="col-md-12 column">
-		<ul class="nav nav-tabs">
+		<ul class="nav nav-pills" style="border-bottom:1px solid #ccc;">
 			<li class="active"><a href="${pageContext.request.contextPath }/nav_index">首页</a></li>
 			<li><a href="${pageContext.request.contextPath }/nav_apply">加入申请</a></li>
 			<li><a href="${pageContext.request.contextPath }/nav_show">成果展区</a></li>
-			<li><a href="${pageContext.request.contextPath }/nav_summary">简介</a></li>
-			<li><a href="${pageContext.request.contextPath }/nav_message">信息</a></li>
+			<li><a href="${pageContext.request.contextPath }/nav_summary">关于我们</a></li>
+			<%-- <li><a href="${pageContext.request.contextPath }/nav_message">信息</a></li> --%>
 			<li class="dropdown pull-right"><c:if
 					test="${not empty exitUser}">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">${exitUser.userName }<strong

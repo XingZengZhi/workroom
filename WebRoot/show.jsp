@@ -65,10 +65,11 @@
 						}, "json");
 		//异步对获取所有视频链接
 		$.post("${pageContext.request.contextPath}/video_getAllVideo",function(data){
+			/* 因为media盒子只能装两个video，所以需要计算需要几个media盒子 */
 			var len = data.length / 2;
-			var flagi = 0;
+			var flagi = 0; //防止i从零开始计算
 			for(var j = 0;j<=len;j++){
-				var flag = 0;
+				var flag = 0; //计算每个media盒子只能装两个video的标志位
 				$("#panel-187352").append("<div class='media' id='"+j+"'></div>");
 				for(var i = flagi;i<data.length;i++,flag++){
 					if(flag != 2){
@@ -159,7 +160,6 @@
 		 							</video>
 								</div>
 							</div> --%>
-							
 						</div>
 					</div>
 				</div>

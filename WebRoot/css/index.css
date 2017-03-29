@@ -1,18 +1,4 @@
 @CHARSET "UTF-8";
-#foot ul li a {
-	text-decoration: none;
-	color: white;
-	transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-}
-
-#foot ul li a:hover {
-	color: #00C1DE;
-}
-
 .thumbnail:hover {
 	box-shadow: 0 10px 20px #ccc;
 }

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <title>简介</title>
@@ -11,10 +12,28 @@
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath }/img/sj.ico">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.min.css">
+	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css">
 <script src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+	.muted,.page-header{
+		text-indent:0;
+		text-align:left;
+		line-height:30px;
+		color:#999999;
+	}
+	.muted{
+		font-size: 20px;
+		max-width:450px;
+	}
+	.boss-header{
+		color:black;
+	}
+	.boss-header h2{
+		text-align:center;
+	}
+</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -22,7 +41,41 @@
 			<div class="col-md-12">
 				<jsp:include page="head.jsp" />
 			</div>
-			
+			<!-- 简介内容 -->
+			<div class="col-md-12">
+				<div class="page-header boss-header">
+					<h2>贵州师范学院大学生创新创业中心</h2>
+				</div>
+			</div>
+			<div class="col-md-12" style="margin-top:100px;">
+				<div class="col-md-7">
+					<img style="width: 520px; height: 200px"
+						src="${pageContext.request.contextPath }/img/about_p1.png" />
+				</div>
+				<div class="col-md-5">
+					<div class="page-header">
+						<h2>多人团队合作高效开发</h2>
+					</div>
+					<p class="lead muted">是一个分布式的版本控制系统，最初由编写，用作Linux内核代码的管理。在推出后，
+						Git在其它项目中也取得了很大成功，尤其是在Ruby社区中。是一个分布式的版本控制系统，最初由编写，
+						用作Linux内核代码的管理。在推出后</p>
+				</div>
+			</div>
+			<div class="col-md-12" style="margin-top:100px;">
+				<div class="col-md-6">
+					<div class="page-header">
+						<h2>信息资料学习内容共享</h2>
+					</div>
+					<p class="lead muted">是一个分布式的版本控制系统，最初由编写，用作Linux内核代码的管理。在推出后，
+						Git在其它项目中也取得了很大成功，尤其是在Ruby社区中。是一个分布式的版本控制系统，最初由编写，
+						用作Linux内核代码的管理。在推出后</p>
+				</div>
+				<div class="col-md-6">
+					<img style="width: 520px; height: 200px"
+						src="${pageContext.request.contextPath }/img/about_p2.png" />
+				</div>
+			</div>
+
 			<div class="col-md-12">
 				<jsp:include page="workRoomFoot.jsp" />
 			</div>

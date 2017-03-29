@@ -1,29 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- 页脚 -->
-<div class="row clearfix"
-	style="color: white; background-color: #373D41; margin-top: 20px; border-top: 1px solid royalblue; padding-top: 10px;">
-	<div class="col-md-4 column" id="foot">
+<div id="foot" class="row clearfix">
+	<div class="col-md-8 column">
 		<ul>
-			<li><a href="">中心简介</a></li>
-			<li><a href="">历史成就</a></li>
-			<li><a href="">校园风光</a></li>
-			<li><a href="">网站地图</a></li>
-			<li>Copyright © 2013贵州师范学院数计学院</li>
-			<li>地址：贵州师范学院大学生创新创业中心</li>
+			<li>版权所属：贵州师范学院数学与计算机科学学院</li>
+			<li>项目名称：工业物联网中心网站开发</li>
+			<li>项目编号：2013GA820002</li>
+			<li>地址：贵州省贵阳市乌当区高新路115号贵州师范学院</li>
+			<li>网站由贵州师范学院负责维修与管理</li>
 		</ul>
 	</div>
 	<div class="col-md-4 column">
-		<address>
-			<strong>Twitter, Inc.</strong> <br /> 795 Folsom Ave, Suite 600<br />
-			San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123)
-			456-7890
-		</address>
-	</div>
-	<div class="col-md-4 column">
-		<blockquote>
-			<p>其实我们每个人的生活都是一个世界，即使最平凡的人也要为他生活的那个世界而奋斗。</p>
-			<small style="color: white;">路遥</small>
+		<blockquote id="bl">
+			<p>联系我们</p>
+			<div id="smalls">
+				<a><img src="${pageContext.request.contextPath }/img/small_wx.png"></a>
+				<a><img src="${pageContext.request.contextPath }/img/small_rg.png"></a>
+				<a><img src="${pageContext.request.contextPath }/img/small_dh.png"></a>
+			</div>
+			<p id="myphone">网站维护电话：182*****634</p>
 		</blockquote>
 	</div>
 </div>
