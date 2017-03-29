@@ -27,5 +27,9 @@
         	<key column="articleForeignKey" />
         	<one-to-many class="edu.gznc.cxcyzx.domain.Article" />
         </set>
+        <set name="videos" inverse="true">
+        	<key column="videoRoomId" />
+        	<one-to-many class="edu.gznc.cxcyzx.domain.Video" />
+        </set>
     </class>
 </hibernate-mapping>

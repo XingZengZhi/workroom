@@ -42,6 +42,7 @@
 				<value>edu/gznc/cxcyzx/domain/Room.hbm.xml</value>
 				<value>edu/gznc/cxcyzx/domain/User.hbm.xml</value>
 				<value>edu/gznc/cxcyzx/domain/Article.hbm.xml</value>
+				<value>edu/gznc/cxcyzx/domain/Video.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -63,6 +64,12 @@
 	<bean id="articleAction" class="edu.gznc.cxcyzx.web.action.ArticleAction" />
 	<bean id="articleService" class="edu.gznc.cxcyzx.service.impl.ArticleServiceImpl" />
 	<bean id="articleDao" class="edu.gznc.cxcyzx.dao.impl.ArticleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 视频模块 -->
+	<bean id="videoAction" class="edu.gznc.cxcyzx.web.action.VideoAction" />
+	<bean id="videoService" class="edu.gznc.cxcyzx.service.impl.VideoServiceImpl" />
+	<bean id="videoDao" class="edu.gznc.cxcyzx.dao.impl.VideoDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- 文件上传模块 -->

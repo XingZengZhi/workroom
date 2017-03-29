@@ -81,26 +81,5 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 		ServletActionContext.getRequest().setAttribute("roomId", ServletActionContext.getRequest().getParameter("roomId"));
 		return "apply";
 	}
-	/*根据工作室id查询相关的文章*/
-	public String roomArticle(){
-		HttpServletResponse response = ServletActionContext.getResponse();
-		String roomid = ServletActionContext.getRequest().getParameter("roomid");
-		Room room = roomService.findByRoomId(Integer.valueOf(roomid));
-		String articleRoom = "article" + roomid; // 保存不同工作室下的文章
-		Jedis jedis = JedisUtils.getJedis();
-		if(jedis.get(articleRoom) == null){
-			Set<Article> articles =  room.getArticles();
-			JsonConfig config = new JsonConfig();
-			config.setExcludes(new String[]{"articleTelphone","articleTeam","articleResouce","articleEnterprise","articleFunction","articleProject","room"});
-			jedis.set(articleRoom, JSONArray.fromObject(articles, config).toString());
-		}
-		try {
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().print(jedis.get(articleRoom));
-			jedis.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return NONE;
-	}
+	
 }

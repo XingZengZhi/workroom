@@ -12,6 +12,7 @@ public class Room {
 	private String roomContactWay;
 	private Set<User> users = new HashSet<User>();
 	private Set<Article> articles = new HashSet<Article>();
+	private Set<Video> videos = new HashSet<Video>();
 	public Integer getRoomId() {
 		return roomId;
 	}
@@ -53,6 +54,12 @@ public class Room {
 	}
 	public void setArticles(Set<Article> articles) {
 		this.articles = articles;
+	}
+	public Set<Video> getVideos() {
+		return videos;
+	}
+	public void setVideos(Set<Video> videos) {
+		this.videos = videos;
 	}
 	
 }

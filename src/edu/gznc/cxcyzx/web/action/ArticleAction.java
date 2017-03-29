@@ -2,6 +2,7 @@ package edu.gznc.cxcyzx.web.action;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +15,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import edu.gznc.cxcyzx.domain.Article;
+import edu.gznc.cxcyzx.domain.Room;
 import edu.gznc.cxcyzx.service.ArticleService;
+import edu.gznc.cxcyzx.utils.JedisUtils;
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
+import redis.clients.jedis.Jedis;
 
 @Controller
 @Scope("prototype")
@@ -37,5 +43,12 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 			e.printStackTrace();
 		}
 		return NONE;
+	}
+	/*根据id查询文章*/
+	public String roomArticle(){
+		String articleid = ServletActionContext.getRequest().getParameter("articleid");
+		Article article = articleService.findByArticleId(Integer.valueOf(articleid));
+		ServletActionContext.getRequest().setAttribute("article", article);
+		return "article";
 	}
 }

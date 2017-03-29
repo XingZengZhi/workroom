@@ -11,13 +11,20 @@
 <meta name="keywords" content="贵州师范学院,贵州师范学院物联网中心,创新创业中心,贵州师范学院创新创业中心">
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath }/img/sj.ico">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css">
-<script src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/js/jquery-3.2.0.min.js"></script>
+<!-- <script src="http://vjs.zencdn.net/5.18.4/video.min.js"></script> -->
+<script
+	src="${pageContext.request.contextPath }/js/videojs-ie8.min.js"></script>
+<script
+	src="${pageContext.request.contextPath }/js/video.min.js"></script>
 <script
 	src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/css/show.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/css/video-js.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css">
 <script type="text/javascript">
 	$(function() {
 		//异步读取所有工作室的名称和设置每个工作室的链接
@@ -28,7 +35,8 @@
 			success : function(data) {
 				for (var i = 0; i < data.length; i++) {
 					$(".dropdown-menu").append(
-							"<li><a name='"+ data[i].roomId +"'>" + data[i].roomName + "</a></li>");
+							"<li><a name='"+ data[i].roomId +"'>"
+									+ data[i].roomName + "</a></li>");
 				}
 			}
 		});
@@ -49,19 +57,41 @@
 														+ data[i].articleText
 														+ "</p>"
 														+ "<p>"
-														+ "<a class='btn btn-primary' href=''>"
+														+ "<a target='_blank' href='${pageContext.request.contextPath}/article_roomArticle?articleid="+ data[i].articleId +"'>"
 														+ "阅读全文</a>" + "</p>"
 														+ "</div>" + "</div>"
 														+ "</li>");
 							}
 						}, "json");
-		
-		$("#searchText").click(function(){
-			$(".caption h3").each(function(i, n){
+		//异步对获取所有视频链接
+		$.post("${pageContext.request.contextPath}/video_getAllVideo",function(data){
+			var len = data.length / 2;
+			var flagi = 0;
+			for(var j = 0;j<=len;j++){
+				var flag = 0;
+				$("#panel-187352").append("<div class='media' id='"+j+"'></div>");
+				for(var i = flagi;i<data.length;i++,flag++){
+					if(flag != 2){
+						$("#"+j).append("<div class='media-body'>" +
+								"<h4 class='media-heading'>" + data[i].videoName + "</h4>" +
+								"<video id='my-video' class='video-js vjs-big-play-centered' controls preload='auto' width='540' height='264'" +
+								 "poster='${pageContext.request.contextPath }/img/new.png' data-setup='{}'>" +
+											 "<source src='"+data[i].videoSrc +"' type='video/mp4'>" +
+									"</video>" +
+							"</div>");
+						flagi++;
+					}
+				}
+				
+			}
+		},"json");
+		//对文章进行搜索
+		$("#searchText").click(function() {
+			$(".caption h3").each(function(i, n) {
 				var text = $(n).text(); /* 获得文章标题 */
-				if(text.indexOf($(".search-query").val()) < 0){ /* 判断文章标题中是否含有搜索的字符串 */
+				if (text.indexOf($(".search-query").val()) < 0) { /* 判断文章标题中是否含有搜索的字符串 */
 					$(n).parents("li").fadeOut(1000);
-				}else{
+				} else {
 					$(n).parents("li").fadeIn(1000);
 				}
 			});
@@ -71,6 +101,7 @@
 </script>
 </head>
 <body>
+
 	<div class="container-fluid">
 		<div class="row-fluid" style="margin-top: 20px;">
 			<div class="col-md-12">
@@ -81,7 +112,7 @@
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#panel-706309" data-toggle="tab">文章预览</a>
 						</li>
-						<li><a href="#panel-187352" data-toggle="tab">视频分享</a></li>
+						<li><a href="#panel-187352" data-toggle="tab">视频预览</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="panel-706309">
@@ -92,7 +123,7 @@
 								<button type="submit" id="searchText" class="btn">查找文章</button>
 							</form>
 							<!-- 结束 -->
-							<ul class="thumbnails" style="margin-left: -55px;">
+							<ul class="thumbnails">
 								<!-- 文章遍历 -->
 							</ul>
 						</div>
@@ -103,23 +134,32 @@
 								<input class="input-medium search-query" type="text" />
 								<button type="submit" class="btn">查找视频</button>
 							</form>
-
-							<div class="media">
-								<a href="#" class="pull-left"><img src="img/a_002.jpg"
-									class="media-object" /></a>
+							<%-- <div class="media">
 								<div class="media-body">
 									<h4 class="media-heading">嵌入媒体标题</h4>
-									请尽量使用HTML5兼容的视频格式和视频代码实现视频播放, 以达到更好的体验效果.
+									<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="540" height="264"
+		 									 poster="${pageContext.request.contextPath }/img/new.png" data-setup="{}">
+		 									 <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+		 							</video>
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">嵌入媒体标题</h4>
+									<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="540" height="264"
+		 									 poster="${pageContext.request.contextPath }/img/new.png" data-setup="{}">
+		 									 <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+		 							</video>
 								</div>
 							</div>
 							<div class="media">
-								<a href="#" class="pull-left"><img src="img/a_002.jpg"
-									class="media-object" /></a>
 								<div class="media-body">
 									<h4 class="media-heading">嵌入媒体标题</h4>
-									请尽量使用HTML5兼容的视频格式和视频代码实现视频播放, 以达到更好的体验效果.
+									<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="540" height="264"
+		 									 poster="${pageContext.request.contextPath }/img/new.png" data-setup="{}">
+		 									 <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+		 							</video>
 								</div>
-							</div>
+							</div> --%>
+							
 						</div>
 					</div>
 				</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-29 13:48:53 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="edu.gznc.cxcyzx.domain.Video" table="video">
+        <id name="videoId" type="java.lang.Integer">
+            <column name="videoId" />
+            <generator class="native" />
+        </id>
+        <property name="videoName" type="java.lang.String">
+            <column name="videoName" />
+        </property>
+        <property name="videoTime" type="java.lang.String">
+            <column name="videoTime" />
+        </property>
+        <property name="videoSrc" type="java.lang.String">
+            <column name="videoSrc" />
+        </property>
+        <many-to-one name="room" cascade="save-update" class="edu.gznc.cxcyzx.domain.Room" fetch="join">
+            <column name="videoRoomId" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -36,6 +36,10 @@
 		</action>
 		<!-- 文章模块 -->
 		<action name="article_*" method="{1}" class="articleAction">
+			<result name="article">/WEB-INF/pages/article.jsp</result>
+		</action>
+		<!-- 视频模块 -->
+		<action name="video_*" method="{1}" class="videoAction">
 			
 		</action>
 		<!-- 文件上传模块 -->
