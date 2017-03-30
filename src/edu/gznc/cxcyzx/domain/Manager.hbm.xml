@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-30 18:33:33 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="edu.gznc.cxcyzx.domain.Manager" table="manager">
+        <id name="mId" type="java.lang.Integer" access="field">
+            <column name="mId" />
+            <generator class="native" />
+        </id>
+        <property name="mName" type="java.lang.String" access="field">
+            <column name="mName" />
+        </property>
+        <property name="mPass" type="java.lang.String" access="field">
+            <column name="mPass" />
+        </property>
+        <property name="mImg" type="java.lang.String" access="field">
+            <column name="mImg" />
+        </property>
+    </class>
+</hibernate-mapping>

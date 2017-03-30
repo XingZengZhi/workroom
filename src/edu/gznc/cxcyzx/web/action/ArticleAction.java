@@ -27,6 +27,7 @@ import redis.clients.jedis.Jedis;
 public class ArticleAction extends ActionSupport implements ModelDriven<Article> {
 	private static final long serialVersionUID = 1L;
 	private Article article = new Article();
+	
 	@Override
 	public Article getModel() {
 		return article;

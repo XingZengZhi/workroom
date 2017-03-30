@@ -42,6 +42,11 @@
 		<action name="video_*" method="{1}" class="videoAction">
 			
 		</action>
+		<!-- 后台管理模块 -->
+		<action name="manager_*" method="{1}" class="managerAction">
+			<result name="bgindex">/index.jsp</result>
+			<result name="bgLogin">/bgLogin.jsp</result>
+		</action>
 		<!-- 文件上传模块 -->
 		<action name="fileUpload" method="fileUpload" class="fileAction">
 			<interceptor-ref name="fileUpload">
