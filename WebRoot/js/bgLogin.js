@@ -80,8 +80,9 @@ $(document).ready(function(){
 				return false;
 			}
 		}
+		alert(sha);
 		var ac = $("#registerForm").prop("action");
-		$("#loginForm").prop("action",ac + "?uName=" + ruName + "&uPass=" + sha);
+		$("#registerForm").prop("action",ac + "?ruName=" + ruName + "&ruPass=" + sha);
 	});
 	//失去焦点开始执行
 	function check(e1, e2){
@@ -141,4 +142,13 @@ $(document).ready(function(){
 		}
 	}
 	
+	//点击切换头像
+	$("#headImage").click(function(){
+		var href = $("#headImage").prop("src"); //获取初始链接
+		var last = href.lastIndexOf('/'); //获取最后一个/符号的下标
+		href = href.substring(0, last); //将src进行切割
+		var newHeadImage = Math.random() * 10; //随机生成0-9随机数
+		href = href + "/head_" + Math.floor(newHeadImage) + ".jpg"; //Math.floor取等于参数值的最大整数
+		$("#headImage").prop("src", href);
+	});
 });

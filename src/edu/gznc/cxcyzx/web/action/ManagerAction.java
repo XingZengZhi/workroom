@@ -35,4 +35,14 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 		}
 		return "bgLogin";
 	}
+	//管理者注册
+	public String insertManager(){
+		String ruName = ServletActionContext.getRequest().getParameter("ruName");
+		String ruPass = ServletActionContext.getRequest().getParameter("ruPass");
+		System.out.println(ruPass);
+		manager.setmName(ruName);
+		manager.setmPass(ruPass);
+		mService.save(manager);
+		return "bgLogin";
+	}
 }

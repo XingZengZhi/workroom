@@ -14,11 +14,16 @@ import edu.gznc.cxcyzx.service.ManagerService;
 public class ManagerServiceImpl implements ManagerService {
 	@Resource
 	private ManagerDao mDao;
-	
+	//查找管理员
 	@Override
 	public Manager findManager(String uName, String uPass) {
 		Manager ma = mDao.findManager(uName, uPass);
 		return ma;
+	}
+	//新增管理员
+	@Override
+	public void save(Manager manager) {
+		mDao.save(manager);
 	}
 
 }

@@ -4,17 +4,17 @@
 <!-- Generated 2017-3-30 18:33:33 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="edu.gznc.cxcyzx.domain.Manager" table="manager">
-        <id name="mId" type="java.lang.Integer" access="field">
+        <id name="mId" type="java.lang.Integer">
             <column name="mId" />
             <generator class="native" />
         </id>
-        <property name="mName" type="java.lang.String" access="field">
+        <property name="mName" type="java.lang.String">
             <column name="mName" />
         </property>
-        <property name="mPass" type="java.lang.String" access="field">
+        <property name="mPass" type="java.lang.String">
             <column name="mPass" />
         </property>
-        <property name="mImg" type="java.lang.String" access="field">
+        <property name="mImg" type="java.lang.String">
             <column name="mImg" />
         </property>
     </class>

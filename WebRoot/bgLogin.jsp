@@ -21,8 +21,8 @@
 	<div id="content">
 		<div id="bglogin">
 			<div id="head">
-				<img src="${pageContext.request.contextPath }/bgimg/1.jpg"
-					title="点击切换头像" />
+				<img src="${pageContext.request.contextPath }/bgimg/head_1.jpg"
+					title="点击切换头像" id="headImage" />
 			</div>
 			<div id="rg_lg">
 				<div id="tip"></div>
@@ -41,7 +41,7 @@
 				</div>
 				<!--注册-->
 				<div id="register">
-					<form action="" method="post" id="registerForm">
+					<form action="${pageContext.request.contextPath }/manager_insertManager" method="post" id="registerForm">
 						<input type="text" name="uName" id="ruName" placeholder="输入用户名" />
 						<input type="password" name="uPass" id="ruPass" placeholder="输入密码" />
 						<input type="password" name="ruPass" id="ruPassword"
