@@ -95,6 +95,19 @@ ul {
 	white-space: nowrap;
 }
 
+#userMessage a{
+	position:absolute;
+	color:#15967B;
+	text-decoration:none;
+	font-size:13px;
+	left:120px;
+	top:90px;
+}
+
+#userMessage a:hover{
+	text-decoration:underline;
+}
+
 #links {
 	/*border:1px solid red;*/
 	margin-bottom: 20px;

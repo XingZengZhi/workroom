@@ -25,5 +25,10 @@ public class ManagerServiceImpl implements ManagerService {
 	public void save(Manager manager) {
 		mDao.save(manager);
 	}
+	//保存或更新管理者
+	@Override
+	public void saveOrupdate(Manager manager) {
+		mDao.saveOrupdate(manager);
+	}
 
 }

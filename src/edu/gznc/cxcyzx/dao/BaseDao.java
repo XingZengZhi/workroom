@@ -8,6 +8,7 @@ import org.hibernate.criterion.DetachedCriteria;
 public interface BaseDao<T> {
 	public void save(T t);
 	public void update(T t);
+	public void saveOrupdate(T t);
 	public void delete(T t);
 	public T findById(Serializable id);
 	// 分页查询方法

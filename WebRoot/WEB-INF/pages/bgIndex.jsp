@@ -18,8 +18,9 @@
 			</div>
 			<!--用户信息栏-->
 			<div id="userMessage">
-				<img src="${pageContext.request.contextPath }/bgimg/head_1.jpg" />
-				<p>欢迎您，melovem</p>
+				<img src="${pageContext.request.contextPath }/bgimg/${Manager.mImg}"/>
+				<p>欢迎您，${Manager.mName }</p>
+				<a href="${pageContext.request.contextPath }/manager_removeManager">注销</a>
 			</div>
 			<!--导航链接-->
 			<div id="links">

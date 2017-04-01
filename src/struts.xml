@@ -44,7 +44,7 @@
 		</action>
 		<!-- 后台管理模块 -->
 		<action name="manager_*" method="{1}" class="managerAction">
-			<result name="bgindex">/index.jsp</result>
+			<result name="bgindex">/WEB-INF/pages/bgIndex.jsp</result>
 			<result name="bgLogin">/bgLogin.jsp</result>
 		</action>
 		<!-- 文件上传模块 -->

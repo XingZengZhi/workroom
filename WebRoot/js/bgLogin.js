@@ -27,12 +27,16 @@ $(document).ready(function(){
 			},500,function(){
 				$(this).parent().css("background-color","#8CB66E");
 			});
+			//添加记住我的
+			$(this).prop("title",1);
 		}else{
 			$(this).children("i").animate({
 				left:0+'%'
 			},500,function(){
 				$(this).parent().css("background-color","#CBCBCB");
 			});
+			//不记住我
+			$(this).prop("title",0);
 		}
 	});
 	//验证登录的用户名和密码是否合法
@@ -46,6 +50,7 @@ $(document).ready(function(){
 		//非空校验
 		var uName = $("#uName").val();
 		var uPass = $("#uPass").val();
+		var src = $("#headImage").prop("src").substring($("#headImage").prop("src").lastIndexOf('/')+1, $("#headImage").prop("src").length);
 		var sha = hex_sha1(uPass); //密码加密
 		if(uName == "" || uPass == ""){
 			alert("用户名或密码不能为空");
@@ -59,7 +64,7 @@ $(document).ready(function(){
 		}
 		//拼接action链接，解决多个form表单提交的问题
 		var ac = $("#loginForm").prop("action");
-		$("#loginForm").prop("action",ac + "?uName=" + uName + "&uPass=" + sha);
+		$("#loginForm").prop("action",ac + "?uName=" + uName + "&uPass=" + sha + "&uImg=" + src + "&remeber=" + $("#remeber").prop("title"));
 	});
 	//注册按钮提交
 	$registerBtn.click(function(){
@@ -80,7 +85,6 @@ $(document).ready(function(){
 				return false;
 			}
 		}
-		alert(sha);
 		var ac = $("#registerForm").prop("action");
 		$("#registerForm").prop("action",ac + "?ruName=" + ruName + "&ruPass=" + sha);
 	});
