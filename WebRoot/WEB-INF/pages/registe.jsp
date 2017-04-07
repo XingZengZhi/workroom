@@ -44,15 +44,12 @@
 						<div class="form-group">
 							<label for="exampleInputEmail1">用户名</label>
 							<span id="checName" style="margin-left:5px;"></span>
-							<input
-								placeholder="不能带有特殊符号，长度在5-16之间" type="text" class="form-control"
-								id="exampleInputEmail1" name="userName" />
+							<input placeholder="不能带有特殊符号，长度在5-16之间" type="text" class="form-control" id="exampleInputEmail1" name="userName" />
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">密码</label>
 							<span id="checkPassword" style="margin-left:20px;"></span>
-							<input
-								placeholder="密码长度不能少于4位数" name="userPassword" type="password" class="form-control" id="exampleInputPassword1" />
+							<input placeholder="密码长度不能少于4位数" name="userPassword" type="password" class="form-control" id="exampleInputPassword1" />
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">确认密码</label>

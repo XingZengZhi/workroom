@@ -3,6 +3,7 @@ package edu.gznc.cxcyzx.service.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import edu.gznc.cxcyzx.utils.JedisUtils;
 import edu.gznc.cxcyzx.utils.MD5Utils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 import redis.clients.jedis.Jedis;
 
 @Transactional
@@ -49,7 +51,9 @@ public class UserServiceImpl implements UserService {
 		Jedis jedis = JedisUtils.getJedis();
 		if(jedis.get("roomList") == null){
 			List<Room> list = userDao.findAllRoom();
-			jedis.set("roomList",JSONArray.fromObject(list).toString());
+			JsonConfig config = new JsonConfig();
+			config.setExcludes(new String[]{"users","articles","videos"});
+			jedis.set("roomList",JSONArray.fromObject(list, config).toString());
 		}
 		String roomlist = jedis.get("roomList");
 		jedis.close();
@@ -65,6 +69,26 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void save(User user) {
 		userDao.save(user);
+	}
+
+	@Override
+	public Integer Count(DetachedCriteria dc) {
+		return userDao.Count(dc);
+	}
+
+	@Override
+	public List<User> findByPage(DetachedCriteria dc, Integer begin, Integer pageSize) {
+		return userDao.findByPage(dc, begin, pageSize);
+	}
+
+	@Override
+	public User findByUserName(String Name) {
+		return userDao.findByUserName(Name);
+	}
+
+	@Override
+	public void deleteUser(User user) {
+		userDao.delete(user);
 	}
 
 }

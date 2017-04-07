@@ -121,6 +121,9 @@ ul {
 
 #links li:hover {
 	cursor: pointer;
+}
+
+.liActive{
 	background-color: rgb(35, 40, 44);
 	border-right: 4px solid rgb(0, 177, 125);
 }
@@ -156,6 +159,7 @@ ul {
 	background-color:white;
 	position: absolute;
 	display:block;
+	min-height:540px;
 	width: 100%;
 }
 
@@ -242,7 +246,7 @@ ul {
 }
 
 .userListItem {
-	padding-left: 40px;
+	margin-left: 40px;
 	border-bottom: 1px solid #DFF0D8;
 	transition: all 0.5s;
 }
@@ -277,7 +281,7 @@ ul {
 	display: none;
 	width: 100%;
 }
-#updateRoomSum p,#applyList p,#roomVisit p{
+#updateRoomSum > p,#applyList > p,#roomVisit > p{
 	border-left:4px solid #15967B;
 	font-size:14px;
 	color:#878A89;
@@ -303,6 +307,7 @@ ul {
 	height:250px;
 	margin-left:20px;
 	margin-top:10px;
+	position:relative;
 }
 
 #updateRoomSum #selectRoom{
@@ -317,6 +322,7 @@ ul {
 #updateRoomSum button{
 	width:80px;
 	height:30px;
+	margin-left:235px;
 	background-color:#15967B;
 	border:none;
 	font-size:13px;
@@ -348,15 +354,24 @@ ul {
 	width:100%;
 	height:200px;
 	margin-top:22px;
-	overflow: scroll;
+	overflow-y: scroll;
 	border:1px solid #15967B;
 }
 
 #roomVisit{
 	width:100%;
-	height: 280px;
+	min-height: 280px;
 }
 
+#roomVisit #dataShow{
+	display:block;
+	width:600px;
+	height:400px;
+	margin:0 auto;
+}
+
+/* 结束 */
+/* 作品管理模块 */
 #productTables{
 	background-color:white;
 	position: absolute;
@@ -381,12 +396,21 @@ ul {
 #pageList {
 	margin-top: 10px;
 	margin-bottom:10px;
+	position:relative;
+	height:35px;
 	/*border:1px solid red;*/
 }
 
-#page {
-	margin: 0 auto;
-	display: block;
+#max,#min{
+	display:none;
+}
+
+#pageList #max,#pageList #min{
+	position:absolute;
+}
+
+#page,#pageleft{
+	display:block;
 	width: 60px;
 	height: 30px;
 	text-align: center;
@@ -394,22 +418,114 @@ ul {
 	background-color: #999;
 	border-radius: 10px;
 	transition: all 0.5s;
+	position:absolute;
 }
 
-#page:hover {
+#page{
+	left:450px;
+	display:none;
+}
+
+#pageleft{
+	display:none;
+	left:400px;
+}
+
+#page:hover,#pageleft:hover{
 	cursor: pointer;
 	width: 80px;
 	background-color: #f5f736;
+}
+
+#pageleft:hover{
+	left:380px;
 }
 
 #page:hover span {
 	margin-left: 20px;
 }
 
-#page span {
+#pageleft:hover span {
+	margin-right: 20px;
+}
+
+#page span,#pageleft span {
 	width: 100%;
 	height: 30px;
 	line-height: 30px;
 	font-weight: 600;
 	transition: all 0.5s;
+}
+/*定义下拉选择器外部盒子*/
+#selector{
+	display: block;
+	width:200px;
+	min-height: 35px;
+	position:absolute;
+}
+/*定义下拉项的样式*/
+#selector p{
+	margin:0;
+	display: block;
+	width:100%;
+	height:30px;
+	line-height: 30px;
+	font-size:14px;
+}
+/*下拉自选项*/
+#selector #items{
+	display: none;
+	border:1px solid #ccc;
+	border-radius: 10px;
+	margin-top:2px;
+	box-shadow: 0 0 5px #ccc;
+	background-color:white;
+}
+#selector #items p{
+	width:95%;
+	padding-left:10px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+#selector #items p:hover{
+	cursor:pointer;
+	color:orangered;
+}
+/*定义第一个默认的选择项*/
+#selector #one{
+	border:1px solid dodgerblue;
+	background-color:#15967B;
+	border-radius:10px;
+	cursor:pointer;
+	position:relative;
+	box-shadow: 0 0 3px #15967B;
+}
+/*第一个下拉选项的内容样式*/
+#one #xe{
+	display: inline-block;
+	width:80%;
+	height:30px;
+	line-height: 30px;
+	color:white;
+	border-right:1px solid white;
+	font-size:14px;
+	margin-left:10px;
+	cursor:pointer;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+/* 画三角形 */
+#one #re{
+	display: inline-block;
+	width:0;
+	height:0;
+	border-top:8px solid white;
+	border-left:5px solid transparent;
+	border-right:5px solid transparent;
+	right:10px;
+	top:13px;
+	cursor:pointer;
+	position:absolute;
 }

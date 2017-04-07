@@ -1,6 +1,8 @@
 package edu.gznc.cxcyzx.web.action;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +44,33 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 	//根据工作室id查询工作室的简介
 	public String BackRoomPage(){
 		Integer roomId = Integer.valueOf(ServletActionContext.getRequest().getParameter("roomId"));
+		//设置每一次访问对应的工作室就计数
+		if(ServletActionContext.getContext().getApplication() == null){
+			/*Map<String, Object> RoomMap = new HashMap<String, Object>();*/
+			/*if(RoomMap.get(String.valueOf(roomId)) == null){
+				//如果没有这个工作室，则计数初始化为0
+				RoomMap.put(String.valueOf(roomId), 0);
+			}else{
+				Integer count = (Integer) RoomMap.get(String.valueOf(roomId));
+				count++;
+				//更新对应的键值
+				RoomMap.put(String.valueOf(roomId), count);
+			}*/
+			ServletActionContext.getContext().setApplication(new HashMap<String, Object>());
+		}
+		//取出application中的map
+		Map<String, Object> RoomMap = ServletActionContext.getContext().getApplication();
+		if(RoomMap.get(String.valueOf(roomId)) == null){
+			//如果没有这个工作室，则计数初始化为0
+			RoomMap.put(String.valueOf(roomId), 1);
+		}else{
+			Integer count = (Integer) RoomMap.get(String.valueOf(roomId));
+			count++;
+			//更新对应的键值
+			RoomMap.put(String.valueOf(roomId), count);
+		}
+		ServletActionContext.getContext().setApplication(RoomMap);
+		System.out.println(RoomMap.get(String.valueOf(roomId)));
 		//根据对应的工作室id查询对应的文章
 		Room room = roomService.findByRoomId(roomId);
 		Article article = articleService.findByArticleId(room.getRoomId());
@@ -80,6 +109,20 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 	public String GiveId(){
 		ServletActionContext.getRequest().setAttribute("roomId", ServletActionContext.getRequest().getParameter("roomId"));
 		return "apply";
+	}
+	//更改工作室详情
+	public String ChangeRoomSum() throws IOException{
+		String roomName = ServletActionContext.getRequest().getParameter("roomName");
+		String roomSum = ServletActionContext.getRequest().getParameter("roomSum");
+		Room room = roomService.findRoomByName(roomName);
+		if(room != null){
+			room.setRoomSum(roomSum);
+			roomService.updateRoom(room);
+			ServletActionContext.getResponse().getWriter().print("1");
+		}else{
+			ServletActionContext.getResponse().getWriter().print("");
+		}
+		return NONE;
 	}
 	
 }

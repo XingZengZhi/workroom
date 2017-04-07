@@ -6,12 +6,15 @@ $(document).ready(function(){
 	
 	$UserManager.click(function(){
 		navClick($("#userTables"));
+		$(this).addClass("liActive").siblings().removeClass("liActive");
 	});
 	$RoomManager.click(function(){
 		navClick($("#roomTables"));
+		$(this).addClass("liActive").siblings().removeClass("liActive");
 	});
 	$ProductManager.click(function(){
 		navClick($("#productTables"));
+		$(this).addClass("liActive").siblings().removeClass("liActive");
 	});
 	
 	function navClick(e){ //模块切换
@@ -35,5 +38,4 @@ $(document).ready(function(){
 			e2.fadeOut();
 		}
 	}
-	//工作室模块
 });

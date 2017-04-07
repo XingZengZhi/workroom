@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="renderer" content="webkit">
 <meta http-equiv="Content-Type" content="text/html,charset=utf-8">
 <meta name="keywords" content="贵州师范学院,贵州师范学院物联网中心,创新创业中心,贵州师范学院创新创业中心">
 <link rel="shortcut icon"
@@ -19,9 +18,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css">
 <script src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
-
+<script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -51,14 +48,11 @@
 							<c:if test="${not empty error }">
 							<label style="color:red;">${error }</label>
 							</c:if>
-							<input
-								placeholder="请输入用户名" type="text" name="userName"
-								class="form-control" id="exampleInputEmail1" />
+							<input placeholder="请输入用户名" type="text" name="userName" class="form-control" id="exampleInputEmail1" />
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword1">密码</label><input
-								placeholder="请输入密码" type="password" name="userPassword"
-								class="form-control" id="exampleInputPassword1" />
+							<label for="exampleInputPassword1">密码</label>
+							<input placeholder="请输入密码" type="password" name="userPassword" class="form-control" id="exampleInputPassword1" />
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1" style="display:block;">验证码</label><input

@@ -38,5 +38,13 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 	public void update(User user) {
 		super.update(user);
 	}
+	@Override
+	public User findByUserName(String Name) {
+		List<User> users = (List<User>) this.getHibernateTemplate().find("from User where userName = ?", Name);
+		if(users.size() > 0){
+			return users.get(0);
+		}
+		return null;
+	}
 
 }
