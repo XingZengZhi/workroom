@@ -46,16 +46,6 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 		Integer roomId = Integer.valueOf(ServletActionContext.getRequest().getParameter("roomId"));
 		//设置每一次访问对应的工作室就计数
 		if(ServletActionContext.getContext().getApplication() == null){
-			/*Map<String, Object> RoomMap = new HashMap<String, Object>();*/
-			/*if(RoomMap.get(String.valueOf(roomId)) == null){
-				//如果没有这个工作室，则计数初始化为0
-				RoomMap.put(String.valueOf(roomId), 0);
-			}else{
-				Integer count = (Integer) RoomMap.get(String.valueOf(roomId));
-				count++;
-				//更新对应的键值
-				RoomMap.put(String.valueOf(roomId), count);
-			}*/
 			ServletActionContext.getContext().setApplication(new HashMap<String, Object>());
 		}
 		//取出application中的map
@@ -122,6 +112,27 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 		}else{
 			ServletActionContext.getResponse().getWriter().print("");
 		}
+		return NONE;
+	}
+	//获取每个工作的计数
+	public String GetRoomCounts() throws IOException{
+		Map<String, Integer> maps = new HashMap<String, Integer>();
+		Map<String, Object> RoomMap = ServletActionContext.getContext().getApplication();
+		//读取工作id
+		String dataCount = ServletActionContext.getRequest().getParameter("dataCount");
+		//切割字符串
+		String[] countArr = dataCount.split(",");
+		for(int i = 0;i<countArr.length;i++){
+			//判断application的map中是否存在这个键
+			if(RoomMap.containsKey(countArr[i])){
+				//取出application中对应的键值并存在maps中
+				maps.put(countArr[i], (Integer) RoomMap.get(countArr[i]));
+			}
+		}
+		String json = JSONArray.fromObject(maps).toString();
+		json = json.substring(json.indexOf('{') + 1, json.indexOf('}')).replaceAll("\"", "");
+		System.out.println(json);
+		ServletActionContext.getResponse().getWriter().print(json);
 		return NONE;
 	}
 	
