@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 		if(jedis.get("roomList") == null){
 			List<Room> list = userDao.findAllRoom();
 			JsonConfig config = new JsonConfig();
-			config.setExcludes(new String[]{"users","articles","videos"});
+			config.setExcludes(new String[]{"users","articles","videos","images"});
 			jedis.set("roomList",JSONArray.fromObject(list, config).toString());
 		}
 		String roomlist = jedis.get("roomList");

@@ -44,6 +44,7 @@
 				<value>edu/gznc/cxcyzx/domain/Article.hbm.xml</value>
 				<value>edu/gznc/cxcyzx/domain/Video.hbm.xml</value>
 				<value>edu/gznc/cxcyzx/domain/Manager.hbm.xml</value>
+				<value>edu/gznc/cxcyzx/domain/Image.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -80,8 +81,13 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- 文件上传模块 -->
-	<bean id="fileAction" class="edu.gznc.cxcyzx.web.action.FileAction" />
-	
+	<bean id="uploadAction" class="edu.gznc.cxcyzx.web.action.UploadAction" />
+	<bean id="imageService" class="edu.gznc.cxcyzx.service.impl.ImageServiceImpl" />
+	<bean id="imageDao" class="edu.gznc.cxcyzx.dao.impl.ImageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 文件下载模块 -->
+	<bean id="downloadAction" class="edu.gznc.cxcyzx.web.action.DownloadAction" />
 	
 	<!-- 配置事务管理器。 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">

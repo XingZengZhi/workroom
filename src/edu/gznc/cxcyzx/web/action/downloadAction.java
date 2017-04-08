@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @Controller
 @Scope("prototype")
-public class downloadAction extends ActionSupport {
+public class DownloadAction extends ActionSupport {
 	//下载路径
 	private String inputPath;
 	//下载的文件名

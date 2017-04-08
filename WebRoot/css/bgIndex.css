@@ -382,8 +382,28 @@ ul {
 #picture,#videoManager{
 	height:300px;
 	width:100%;
+	position:relative;
 	border-bottom:1px solid #15967B;
 }
+
+#pictureManager{
+	margin-left:20px;
+	margin-top:20px;
+	max-height:200px;
+	overflow-y:scroll;
+}
+
+#pictureManager img{
+	display:inline-block;
+	width:100px;
+	height:70px;
+	border:1px solid #ccc;
+}
+
+#pictureManager img:hover{
+	box-shadow: 0 0 5px #ccc;
+}
+
 #picture p,#videoManager p{
 	margin-left:20px;
 	margin-top:20px;
@@ -528,4 +548,42 @@ ul {
 	top:13px;
 	cursor:pointer;
 	position:absolute;
+}
+/* 选择图片按钮 */
+#picture form{
+	display:none;
+}
+#picture button{
+	position:absolute;
+	width:100px;
+	height:40px;
+	border-radius:5px;
+	font-size:15px;
+}
+#btn1{
+	display:block;
+	left:20px;
+	bottom:10px;
+	color:white;
+	border:none;
+	background-color:#00B17D;
+}
+#btn2{
+	right:250px;
+	bottom:10px;
+	color:white;
+	border:none;
+	display:none;
+	background-color:#00B17D;
+}
+#btn3{
+	right:100px;
+	bottom:10px;
+	background-color:white;
+	color:#00B17D;
+	display:none;
+	border:1px solid #00B17D;
+}
+#picture button:hover{
+	cursor:pointer;
 }

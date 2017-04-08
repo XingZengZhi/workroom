@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -257,6 +258,25 @@
 				},"text");
 			}
 		});
+		
+		//开始上传按钮
+		$("#btn3").click(function(){
+			var action = $("#picture form").attr("action");
+			/* $("#picture form").submit(); */
+			 var formData = new FormData($("#picture form")[0]);  
+		     $.ajax({  
+		          url:'${pageContext.request.contextPath}/fileUpload',  
+		          type:'POST',  
+		          data:formData,  
+		          async:false,  
+		          cache:false,  
+		          contentType:false,  
+		          processData:false,  
+		          success: function (data) {  
+		             $("#pictureManager").append("<img src='"+ data +"' />");
+		          },  
+		     });  
+		});
 
 	});
 </script>
@@ -344,7 +364,16 @@
 			<div id="productTables">
 				<div id="picture">
 					<p>图片管理</p>
-					<div id="pictureManager"></div>
+					<div id="pictureManager">
+						
+					</div>
+					<s:form action="fileUpload" enctype="multipart/form-data" method="post">
+						<s:file name="upload" />
+						<s:submit value="上传" />
+					</s:form>
+					<button id="btn1">选择图片</button>
+					<button id="btn2">继续添加</button>
+					<button id="btn3">开始上传</button>
 				</div>
 				<div id="videoManager">
 					<p>视频管理</p>

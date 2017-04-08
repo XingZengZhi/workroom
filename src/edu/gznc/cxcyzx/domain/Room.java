@@ -61,5 +61,4 @@ public class Room {
 	public void setVideos(Set<Video> videos) {
 		this.videos = videos;
 	}
-	
 }

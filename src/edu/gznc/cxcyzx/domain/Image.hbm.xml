@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-8 11:47:35 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="edu.gznc.cxcyzx.domain.Image" table="image">
+        <id name="imgId" type="long">
+            <column name="imgId" />
+            <generator class="native" />
+        </id>
+        <property name="imgPath" type="java.lang.String">
+        	<column name="imgPath" />
+        </property>
+    </class>
+</hibernate-mapping>

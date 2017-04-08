@@ -48,18 +48,18 @@
 			<result name="bgLogin">/bgLogin.jsp</result>
 		</action>
 		<!-- 文件上传模块 -->
-		<action name="fileUpload" method="fileUpload" class="fileAction">
+		<action name="fileUpload" method="fileUpload" class="uploadAction">
 			<interceptor-ref name="fileUpload">
-				<!-- <param name="allowedTypes">
+				<!-- 允许上传的图片类型 -->
+				<param name="allowedTypes">
 					image/jpeg,image/gif,image/bmp,image/png,image/jpg
-				</param> -->
+				</param>
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack" />
-			<param name="savePath">/upload</param>
-			<result name="input">/index.jsp</result>
+			<param name="savePath">upload</param>
 		</action>
 		<!-- 文件下载 -->
-		<action name="download" class="edu.gznc.cxcyzx.web.action.downloadAction">
+		<action name="download" class="downloadAction">
 			<!-- 设置文件下载路径参数 -->
 			<!-- <param name="inputPath">/upload/1.jpg</param> -->
 			<result name="success" type="stream">
