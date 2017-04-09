@@ -101,7 +101,7 @@ $(function(){
 			</div>
 			<div class="col-md-4">
 				<form style="margin-top:70px;" 
-						action="${pageContext.request. contextPath}/room_UserRoom?userId=${exitUser.userId }" method="POST">
+						action="${pageContext.request. contextPath}/room_UserRoom?userId=${exitUser.userId }" method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">申请人</label> <input type="text"
 							class="form-control" value="${exitUser.userName }" readonly="readonly">

@@ -181,51 +181,11 @@
 			}
 			SendAjaxByPage(min);
 		});
-		
 		//工作室模块下拉列表
-		$.post("${pageContext.request.contextPath}/user_room", function(data) {
-			var dataArr = new Array(data.length);//存储每个工作室名称
-			var dataCount = new Array(data.length);//每个工作室的计数
-			for (var i = 0; i < data.length; i++) {
+		$.post("${pageContext.request.contextPath}/user_room", function(data){
+			for (var i = 0; i <data.length; i++) {
 				$("#items").append("<p>" + data[i].roomName + "</p>");
-				dataArr[i] = data[i].roomName;//获得工作室名并存入数组
-				dataCount[i] = data[i].roomId;//获得工作室id并存入数组
 			}
-			$.post("${pageContext.request.contextPath}/room_GetRoomCounts",{"dataCount":dataCount.toString()},function(data){
-				//3:1,2:1,1:1,7:1,6:1,5:1,4:1,9:1,8:1
-				var OneArr = data.split(",");
-				var counts = new Array(OneArr.length);
-				for(var i = 0;i<OneArr.length;i++){
-					var TwoArr = OneArr[i].split(":");
-					var index = parseInt(TwoArr[0]) - 1;
-					counts[index] = parseInt(TwoArr[1]);//将对应的工作室id存入访问数量
-				}
-				
-				// 基于准备好的dom，初始化echarts实例
-		        var myChart = echarts.init(document.getElementById('dataShow'));
-		        // 指定图表的配置项和数据
-		        var option = {
-		            title: {
-		                text: '一周访问量'
-		            },
-		            tooltip: {},
-		            legend: {
-		                data:['访问量']
-		            },
-		            xAxis: {
-		                data: dataArr
-		            },
-		            yAxis: {},
-		            series: [{
-		                name: '访问量',
-		                type: 'bar',
-		                data: counts
-		            }]
-		        };
-		        // 使用刚指定的配置项和数据显示图表。
-		        myChart.setOption(option);
-			},"text");
-			
 			//工作室模块
 			var $one = $("#one");//获取一个下拉选项
 			var $items = $("#items");//获取下拉子选项盒子
@@ -238,9 +198,66 @@
 				$xe.text($(this).text());//将子选项的值复制给第一个选项的值
 				$items.fadeOut(100);//将子选项的盒子隐藏
 			});
-			
-	        
-		}, "json");
+		},"json");
+		
+		//柱状图
+		GetCounts();
+		var t, str;
+		function GetCounts(){
+			$.post("${pageContext.request.contextPath}/user_room", function(data) {
+				var dataArr = new Array(data.length);//存储每个工作室名称
+				var dataCount = new Array(data.length);//每个工作室的计数
+				for (var i = 0; i < data.length; i++) {
+					dataArr[i] = data[i].roomName;//获得工作室名并存入数组
+					dataCount[i] = data[i].roomId;//获得工作室id并存入数组
+				}
+				$.post("${pageContext.request.contextPath}/room_GetRoomCounts",{"dataCount":dataCount.toString()},function(data){
+					//3:1,2:1,1:1,7:1,6:1,5:1,4:1,9:1,8:1
+					if(str == ""){
+						str = data;
+					}else{
+						if(str == data){
+							return;
+						}else{
+							str = data;
+						}
+					}
+					var OneArr = data.split(",");
+					var counts = new Array(OneArr.length);
+					for(var i = 0;i<OneArr.length;i++){
+						var TwoArr = OneArr[i].split(":");
+						var index = parseInt(TwoArr[0]) - 1;
+						counts[index] = parseInt(TwoArr[1]);//将对应的工作室id存入访问数量
+					}
+					
+					// 基于准备好的dom，初始化echarts实例
+			        var myChart = echarts.init(document.getElementById('dataShow'));
+			        // 指定图表的配置项和数据
+			        var option = {
+			            title: {
+			                text: ''
+			            },
+			            tooltip: {},
+			            legend: {
+			                data:['访问量']
+			            },
+			            xAxis: {
+			                data: dataArr
+			            },
+			            yAxis: {},
+			            series: [{
+			                name: '访问量',
+			                type: 'bar',
+			                data: counts
+			            }]
+			        };
+			        // 使用刚指定的配置项和数据显示图表。
+			        myChart.setOption(option);
+				},"text");
+			}, "json");
+			t = setTimeout(GetCounts,1000);
+		}
+		
 		//更改工作室详情按钮事件
 		var $button = $("#updateRoomSum button");
 		var $roomSumText = $("#roomSumText");
@@ -365,7 +382,7 @@
 				<div id="picture">
 					<p>图片管理</p>
 					<div id="pictureManager">
-						
+						<!-- 图片存放盒子 -->
 					</div>
 					<s:form action="fileUpload" enctype="multipart/form-data" method="post">
 						<s:file name="upload" />

@@ -1,6 +1,7 @@
 package edu.gznc.cxcyzx.web.action;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -68,7 +69,7 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 		return "success";
 	}
 	//用户申请工作室
-	public String UserRoom(){
+	public String UserRoom() throws UnsupportedEncodingException{
 		Integer uid = null;
 		Integer rid = null;
 		if(ServletActionContext.getRequest().getParameter("userId") != null){
@@ -80,6 +81,7 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 		String userStuID = ServletActionContext.getRequest().getParameter("userStuID");
 		String userPhone = ServletActionContext.getRequest().getParameter("userPhone");
 		String userText = ServletActionContext.getRequest().getParameter("userText");
+		userText = new String(userText.getBytes("ISO-8859-1"), "utf-8");//解决提交乱码问题
 		User user = userService.findByUserId(uid); //获得当前用户信息
 		Room room = roomService.findByRoomId(rid); //获得申请工作室信息
 		if(!userStuID.isEmpty()){ //判断学号是否为空
@@ -121,18 +123,20 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room>{
 		//读取工作id
 		String dataCount = ServletActionContext.getRequest().getParameter("dataCount");
 		//切割字符串
-		String[] countArr = dataCount.split(",");
-		for(int i = 0;i<countArr.length;i++){
-			//判断application的map中是否存在这个键
-			if(RoomMap.containsKey(countArr[i])){
-				//取出application中对应的键值并存在maps中
-				maps.put(countArr[i], (Integer) RoomMap.get(countArr[i]));
+		if(dataCount != null){
+			String[] countArr = dataCount.split(",");
+			for(int i = 0;i<countArr.length;i++){
+				//判断application的map中是否存在这个键
+				if(RoomMap.containsKey(countArr[i])){
+					//取出application中对应的键值并存在maps中
+					maps.put(countArr[i], (Integer) RoomMap.get(countArr[i]));
+				}
 			}
+			String json = JSONArray.fromObject(maps).toString();
+			json = json.substring(json.indexOf('{') + 1, json.indexOf('}')).replaceAll("\"", "");
+			ServletActionContext.getResponse().setCharacterEncoding("UTF-8");
+			ServletActionContext.getResponse().getWriter().print(json);
 		}
-		String json = JSONArray.fromObject(maps).toString();
-		json = json.substring(json.indexOf('{') + 1, json.indexOf('}')).replaceAll("\"", "");
-		System.out.println(json);
-		ServletActionContext.getResponse().getWriter().print(json);
 		return NONE;
 	}
 	

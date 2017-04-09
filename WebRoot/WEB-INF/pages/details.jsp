@@ -25,7 +25,7 @@
 			<div class="col-md-2 column">
 				<ul class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#">简介</a></li>
-					<li><a href="#">资讯</a></li>
+					<li><a href="${pageContext.request.contextPath }/nav_show">资讯</a></li>
 					<li><a href="#">资料下载</a></li>
 				</ul>
 			</div>
