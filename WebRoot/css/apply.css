@@ -4,7 +4,9 @@
 	cursor: pointer;
 }
 
+
 textarea {
+	display:block;
 	resize: none;
 	padding-left:10px;
 	border:none;

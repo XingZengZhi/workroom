@@ -5011,11 +5011,12 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
+  position:relative;
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  /* background-color: #eee; */
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5062,6 +5063,11 @@ a.badge:focus {
   -webkit-transition: all 0.3s;
        -o-transition: all 0.3s;
           transition: all 0.3s;
+}
+.thumbnail h3{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }
 .thumbnail > img,
 .thumbnail a > img {

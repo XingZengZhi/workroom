@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+#shareItem{
+	margin-bottom:200px;
+}
+#share-item{
+	display:block;
+	width:600px;
+	height:140px;
+	padding:10px;
+	margin-top:20px;
+	margin-bottom:20px;
+	margin-left:85px;
+	border:1px solid white;
+	transition:all 0.3s;
+}
+#share-item a:hover{
+	text-decoration:none;
+}
+#share-item:hover{
+	border:1px solid #ccc;
+	box-shadow:0 0 15px #ccc;
+}
+#share-item p{
+	position:relative;
+}
+#share-item p a{
+	display:inline-block;
+	width:300px;
+	font-size:20px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+#share-item p span{
+	position:absolute;
+	right:0;
+	top:5px;
+}
+#article-share{
+	position:relative;
+	display:block;
+	height:40px;
+	overflow:hidden;
+}
+#article-share:after{
+	content:"...";
+    font-weight:bold;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding:0 20px 1px 45px;
+    background:url(../img/ellipsis_bg.png) repeat-y;
+}

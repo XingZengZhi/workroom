@@ -6,13 +6,18 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 
 
+
 @Controller
 @Scope("prototype")
 public class NavAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
+	
 	public String index(){return "index";}
 	public String apply(){return "apply";}
 	public String show(){return "show";}
+	public String share(){return "share";}
 	public String summary(){return "summary";}
 	public String message(){return "message";}
+	public String sharelorejsp(){return "sharelore";}
+	public String mysharejsp(){return "myshare";}
 }

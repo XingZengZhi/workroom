@@ -56,6 +56,7 @@ ul {
 	display: block;
 	width: 100%;
 	height: 140px;
+	position:relative;
 	background-color: rgb(35, 40, 44);
 }
 
@@ -64,6 +65,12 @@ ul {
 	height: 140px;
 	display: block;
 	margin: 10px auto;
+}
+#logo h1{
+	color:white;
+	position:absolute;
+	top:60px;
+	left:80px;
 }
 
 #userMessage {
@@ -550,17 +557,17 @@ ul {
 	position:absolute;
 }
 /* 选择图片按钮 */
-#picture form{
+#picture form, #videoManager form{
 	display:none;
 }
-#picture button{
+#picture button, #videoManager button{
 	position:absolute;
 	width:100px;
 	height:40px;
 	border-radius:5px;
 	font-size:15px;
 }
-#btn1{
+.btn1{
 	display:block;
 	left:20px;
 	bottom:10px;
@@ -568,7 +575,7 @@ ul {
 	border:none;
 	background-color:#00B17D;
 }
-#btn2{
+.btn2{
 	right:250px;
 	bottom:10px;
 	color:white;
@@ -576,7 +583,7 @@ ul {
 	display:none;
 	background-color:#00B17D;
 }
-#btn3{
+.btn3{
 	right:100px;
 	bottom:10px;
 	background-color:white;

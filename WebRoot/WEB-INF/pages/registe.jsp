@@ -12,6 +12,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/register.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css">
 <script src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
 <script
@@ -24,20 +26,21 @@
 			<div class="col-md-12">
 				<jsp:include page="/head.jsp" />
 			</div>
-			<div class="row clearfix" style="margin-top: 20px;">
-				<div class="col-md-8 column">
+			<div class="row clearfix">
+				<div class="col-md-8 column" style="margin-top: 80px;">
 					<div class="jumbotron">
-						<h1>Hello, world!</h1>
-						<p>This is a template for a simple marketing or informational
-							website. It includes a large callout called the hero unit and
-							three supporting pieces of content. Use it as a starting point to
-							create something more unique.</p>
+						<img src="${pageContext.request.contextPath }/barnerimg/registerBarner.jpg" />
+						<h2>Boston Dynamics尝试在波士顿用机器狗送快递</h2>
 						<p>
-							<a class="btn btn-primary btn-large" href="#">Learn more</a>
+						Boston Dynamics一直在研发带腿的机器人，这些机器人虽然外形通常很可怕，
+						但是它们的灵活性也给人们留下了深刻的印象，只是公司一直没有找到这些机器人的商业化应用方式
+						</p>
+						<p>
+							<a class="btn btn-primary btn-large" href="#">详情</a>
 						</p>
 					</div>
 				</div>
-				<div class="col-md-4 column">
+				<div class="col-md-4 column" style="margin-top: 80px;">
 					<form role="form"
 						action="${pageContext.request.contextPath }/user_registe"
 						method="POST">
@@ -56,7 +59,7 @@
 							<span id="checkText" style="margin-left:20px;"></span>
 							<input name="checkPassword" type="password" class="form-control" id="exampleInputPassword1" />
 						</div>
-						<button type="submit" class="btn btn-default">注册</button>
+						<button type="submit" class="btn btn-primary">注册</button>
 					</form>
 				</div>
 			</div>

@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+/* 文章展示样式 */
+#article{
+	text-align:justify;/* 文本两端对齐 */
+	text-indent:40px;
+	font-size:18px;
+	font-family:"宋体";
+	line-height:30px;
+	padding:0 100px;
+	letter-spacing:2px;
+}
+/* 文章所属 */
+#article-label{
+	margin-left:100px;
+}

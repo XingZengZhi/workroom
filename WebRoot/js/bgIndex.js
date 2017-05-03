@@ -39,7 +39,7 @@ $(document).ready(function(){
 		}
 	}
 	//图片上传按钮
-	var $button = $("#picture button:eq(0)");
+	var $button = $("#picture .btn1");
 	var $file = $("#picture input[type='file']");
 	$button.click(function(){
 		$file.click();
@@ -48,10 +48,25 @@ $(document).ready(function(){
 		});
 	});
 	//继续上传按钮
-	$("#btn2").click(function(){
+	$("#picture .btn2").click(function(){
 		$file.click();
 		$file.change(function(){
 			FileChange(this);
+		});
+	});
+	/*视频上传*/
+	var $videoButton = $("#videoManager button:eq(0)");
+	var $video = $("#videoManager input[type='file']");
+	$videoButton.click(function(){
+		$video.click();
+		$video.change(function(){
+			VideoChange(this);
+		});
+	});
+	$("#videoManager .btn2").click(function(){
+		$file.click();
+		$file.change(function(){
+			VideoChange(this);
 		});
 	});
 	
@@ -68,13 +83,37 @@ $(document).ready(function(){
 			target.value = "";//若文件超过大小，则将文件输入框的值置为空
 			return;
 		}else if(filename !="jpg" && filename !="jpeg" && filename !="png" && filename !="bmp" && filename !="gif"){
-			 alert("请选择图片格式文件上传(jpg,png,gif,bmp,jpeg等)！");
+			 alert("请选择正确的格式上传(jpg,png,gif,bmp,jpeg)！");
 	         target.value="";
 	         return;
 		}else{
-			$("#btn1").fadeOut();
-			$("#btn2").fadeIn();
-			$("#btn3").fadeIn();
+			$("#picture .btn1").fadeOut();
+			$("#picture .btn2").fadeIn();
+			$("#picture .btn3").fadeIn();
+		}
+	
+	}
+	
+	function VideoChange(target){
+		var fileSize = 0;
+		fileSize = target.files[0].size;//获取文件大小，字节为单位
+		var size = fileSize / 1024;
+		
+		var name = target.value;//获得文件名
+		var filename = name.substring(name.lastIndexOf('.')+1).toLowerCase();
+		/*image/jpeg,image/gif,image/bmp,image/png,image/jpg*/
+		if(size > 200000){
+			alert("文件不能超过200M");
+			target.value = "";//若文件超过大小，则将文件输入框的值置为空
+			return;
+		}else if(filename !="mp4" && filename !="avi" && filename !="wmv"){
+			 alert("请选择正确的格式上传(mp4,avi,wmv)！");
+	         target.value="";
+	         return;
+		}else{
+			$("#videoManager .btn1").fadeOut();
+			$("#videoManager .btn2").fadeIn();
+			$("#videoManager .btn3").fadeIn();
 		}
 	
 	}

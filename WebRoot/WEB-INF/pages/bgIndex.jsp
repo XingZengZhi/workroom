@@ -5,11 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>后台管理系统</title>
+<title>工业物联网中心后台管理系统</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/css/bgIndex.css" />
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath }/img/sj.ico">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/css/video-js.css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/jquery-3.2.0.min.js"></script>
+<script
+	src="${pageContext.request.contextPath }/js/videojs-ie8.min.js"></script>
+<script
+	src="${pageContext.request.contextPath }/js/video.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/echarts.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/bgIndex.js"></script>
@@ -84,15 +92,12 @@
 
 		//根据名称查询用户
 		var $searchBtn = $("#searchBtn");
-		$searchBtn
-				.click(function() {
+		$searchBtn.click(function() {
 					var name = $("#searchForm").val();
 					if (name == "") {
 						SendAjaxByPage(1);
 					} else {
-						$
-								.post(
-										"${pageContext.request.contextPath}/manager_FindUserByName",
+						$.post("${pageContext.request.contextPath}/manager_FindUserByName",
 										{
 											"uName" : name
 										}, function(data) {
@@ -276,11 +281,10 @@
 			}
 		});
 		
-		//开始上传按钮
-		$("#btn3").click(function(){
+		//开始图片上传按钮
+		$("#picture .btn3").click(function(){
 			var action = $("#picture form").attr("action");
-			/* $("#picture form").submit(); */
-			 var formData = new FormData($("#picture form")[0]);  
+			 var formData = new FormData($("#picture form")[0]);
 		     $.ajax({  
 		          url:'${pageContext.request.contextPath}/fileUpload',  
 		          type:'POST',  
@@ -294,6 +298,28 @@
 		          },  
 		     });  
 		});
+		
+		//开始视频上传按钮
+		$("#videoManager .btn3").click(function(){
+			var action = $("#videoManager form").attr("action");
+			 var formData = new FormData($("#videoManager form")[0]);
+		     $.ajax({  
+		          url:'${pageContext.request.contextPath}/VideoUpload',  
+		          type:'POST',  
+		          data:formData,  
+		          async:false,  
+		          cache:false,  
+		          contentType:false,  
+		          processData:false,  
+		          success: function (data) {
+		        	  alert(data);
+		        	  $("#videoBox").append("<video id='my-video' class='video-js vjs-big-play-centered' controls preload='auto' width='540' height='264'" +
+							 "poster='${pageContext.request.contextPath }/img/new.png' data-setup='{}'>" +
+							 "<source src='"+ data +"' type='video/mp4'>" +
+					"</video>");
+		          },  
+		     });  
+		});
 
 	});
 </script>
@@ -304,6 +330,7 @@
 			<!--网站logo-->
 			<div id="logo">
 				<img src="${pageContext.request.contextPath }/bgimg/bglogo.png" />
+				<h1>Hello !</h1>
 			</div>
 			<!--用户信息栏-->
 			<div id="userMessage">
@@ -388,13 +415,22 @@
 						<s:file name="upload" />
 						<s:submit value="上传" />
 					</s:form>
-					<button id="btn1">选择图片</button>
-					<button id="btn2">继续添加</button>
-					<button id="btn3">开始上传</button>
+					<button class="btn1">选择图片</button>
+					<button class="btn2">继续添加</button>
+					<button class="btn3">开始上传</button>
 				</div>
 				<div id="videoManager">
 					<p>视频管理</p>
-					<div id="VideoManager"></div>
+					<div id="videoBox">
+						<!-- 视频盒子 -->
+					</div>
+					<s:form action="VideoUpload" enctype="multipart/form-data" method="post">
+						<s:file name="video" />
+						<s:submit value="上传" />
+					</s:form>
+					<button class="btn1">选择视频</button>
+					<button class="btn2">继续添加</button>
+					<button class="btn3">开始上传</button>
 				</div>
 			</div>
 		</div>

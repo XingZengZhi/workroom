@@ -28,7 +28,7 @@
 <script type="text/javascript">
 	$(function() {
 		//异步读取所有工作室的名称和设置每个工作室的链接
-		$.ajax({
+		/* $.ajax({
 			type : "POST",
 			url : "${pageContext.request.contextPath }/user_room",
 			dataType : "json",
@@ -39,22 +39,21 @@
 									+ data[i].roomName + "</a></li>");
 				}
 			}
-		});
+		}); */
 		//异步获取所有文章
 		$.post("${pageContext.request.contextPath}/article_returnAllArticle",
 						function(data) {
 							for (var i = 0; i < data.length; i++) {
-								$(".thumbnails")
-										.append(
+								$(".thumbnails").append(
 												"<li class='col-md-4'>"
 														+ "<div class='thumbnail'>"
-														+ "<img src='${pageContext.request.contextPath }/img/image1.jpg' />"
+														+ "<img src='${pageContext.request.contextPath }/img/image" + (i+1) + ".jpg' />"
 														+ "<div class='caption'>"
 														+ "<h3>"
 														+ data[i].articleTitle
 														+ "</h3>"
 														+ "<p id='text'>"
-														+ data[i].articleText
+														+ data[i].articleText.substring(0, 200)
 														+ "</p>"
 														+ "<p>"
 														+ "<a target='_blank' href='${pageContext.request.contextPath}/article_roomArticle?articleid="+ data[i].articleId +"'>"
@@ -135,31 +134,6 @@
 								<input class="input-medium search-query" type="text" />
 								<button type="submit" class="btn">查找视频</button>
 							</form>
-							<%-- <div class="media">
-								<div class="media-body">
-									<h4 class="media-heading">嵌入媒体标题</h4>
-									<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="540" height="264"
-		 									 poster="${pageContext.request.contextPath }/img/new.png" data-setup="{}">
-		 									 <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-		 							</video>
-								</div>
-								<div class="media-body">
-									<h4 class="media-heading">嵌入媒体标题</h4>
-									<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="540" height="264"
-		 									 poster="${pageContext.request.contextPath }/img/new.png" data-setup="{}">
-		 									 <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-		 							</video>
-								</div>
-							</div>
-							<div class="media">
-								<div class="media-body">
-									<h4 class="media-heading">嵌入媒体标题</h4>
-									<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="540" height="264"
-		 									 poster="${pageContext.request.contextPath }/img/new.png" data-setup="{}">
-		 									 <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-		 							</video>
-								</div>
-							</div> --%>
 						</div>
 					</div>
 				</div>

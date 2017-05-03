@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>后台管理系统</title>
+<title>工业物联网中心后台登录</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html,charset=utf-8">
 <link rel="stylesheet"
@@ -35,7 +35,7 @@
 	<div id="content">
 		<div id="bglogin">
 			<div id="head">
-				<img src="${pageContext.request.contextPath }/bgimg/head_1.jpg"
+				<img src="${pageContext.request.contextPath }/bgimg/default.jpg"
 					title="点击切换头像" id="headImage" />
 			</div>
 			<div id="rg_lg">
@@ -45,18 +45,19 @@
 					<form id="loginForm"
 						action="${pageContext.request.contextPath }/manager_findManager"
 						method="post">
-						<input type="text" name="mName" id="uName" placeholder="输入用户名" />
+						<input type="text" name="mName" id="uName" placeholder="输入用户名" autocomplete="off" />
 						<input type="password" name="mPass" id="uPass" placeholder="输入密码" />
-						<p id="for_rg">
-							<a id="forget">忘记密码？</a> <a id="rg">注册</a>
-						</p>
+						<!-- <p id="for_rg">
+							<a id="forget">忘记密码？</a>
+							<a id="rg">注册</a>
+						</p> -->
 						<span id="remeber" title="0"> <i></i>
 						</span> <span id="me"> 记住我？ </span> <input type="submit" value="登录"
 							id="loginBtn" />
 					</form>
 				</div>
 				<!--注册-->
-				<div id="register">
+				<%-- <div id="register">
 					<form
 						action="${pageContext.request.contextPath }/manager_insertManager"
 						method="post" id="registerForm">
@@ -66,7 +67,7 @@
 							placeholder="确认密码" /> <span id="have"> 已有帐号？登录 </span> <input
 							type="submit" value="注册" id="registerBtn" />
 					</form>
-				</div>
+				</div> --%>
 				<div id="errorTip">${errorTip }</div>
 			</div>
 		</div>

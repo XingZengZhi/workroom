@@ -24,7 +24,6 @@
 			</div>
 			<div class="col-md-2 column">
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#">简介</a></li>
 					<li><a href="${pageContext.request.contextPath }/nav_show">资讯</a></li>
 					<li><a href="#">资料下载</a></li>
 				</ul>
@@ -63,7 +62,7 @@
 			<!-- 页脚 -->
 			<div class="col-md-12">
 				<jsp:include page="/workRoomFoot.jsp" />
-		</div>
+			</div>
 		<!-- 页脚结束 -->
 		</div>
 	</div>

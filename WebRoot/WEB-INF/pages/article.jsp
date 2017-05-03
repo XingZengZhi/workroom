@@ -17,6 +17,8 @@
 	src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/article.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -27,10 +29,15 @@
 			<div class="col-md-12" style="margin-top: 20px;">
 				<h3 class="text-center text-info">${article.articleTitle }</h3>
 				<p class="text-center muted">发表时间：${article.articleTime }</p>
-				<p>
+				<p id="article">
 					${article.articleText }
 				</p>
-				<span class="label label-primary">文章所属：${article.room.roomName }</span>
+				<c:if test="${not empty article.room.roomName }">
+					<span id="article-label" class="label label-primary">文章所属：${article.room.roomName }</span>
+				</c:if>
+				<c:if test="${empty article.room.roomName }">
+					<span id="article-label" class="label label-primary">文章作者：${article.articleResouce }</span>
+				</c:if>
 			</div>
 			<!-- 页脚 -->
 			<div class="col-md-12">

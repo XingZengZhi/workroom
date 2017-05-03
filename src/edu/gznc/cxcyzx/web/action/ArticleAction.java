@@ -39,7 +39,17 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setCharacterEncoding("UTF-8");
 		try {
-			response.getWriter().print(articleService.findAllArticle());
+			response.getWriter().print(articleService.FindAllArticleHaveRoom());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return NONE;
+	}
+	public String returnAllArticleNoRoom(){
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setCharacterEncoding("UTF-8");
+		try {
+			response.getWriter().print(articleService.FindAllArticleNoRoom());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -51,5 +61,11 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		Article article = articleService.findByArticleId(Integer.valueOf(articleid));
 		ServletActionContext.getRequest().setAttribute("article", article);
 		return "article";
+	}
+	//保存分享的知识
+	public String ShareLore(){
+		String username = ServletActionContext.getRequest().getParameter("username");
+		
+		return "MyLore";
 	}
 }

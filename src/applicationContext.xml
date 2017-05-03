@@ -80,12 +80,14 @@
 	<bean id="managerDao" class="edu.gznc.cxcyzx.dao.impl.ManagerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<!-- 文件上传模块 -->
+	<!-- 图片上传模块 -->
 	<bean id="uploadAction" class="edu.gznc.cxcyzx.web.action.UploadAction" />
 	<bean id="imageService" class="edu.gznc.cxcyzx.service.impl.ImageServiceImpl" />
 	<bean id="imageDao" class="edu.gznc.cxcyzx.dao.impl.ImageDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- 视频上传模块 -->
+	<bean id="videoUpload" class="edu.gznc.cxcyzx.web.action.VideoUpload" />
 	<!-- 文件下载模块 -->
 	<bean id="downloadAction" class="edu.gznc.cxcyzx.web.action.DownloadAction" />
 	

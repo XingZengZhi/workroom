@@ -121,7 +121,7 @@ $(function(){
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">申请缘由</label>
+						<label for="exampleInputPassword1">申请理由</label>
 						<textarea rows="8" cols="50" id="userText" placeholder="不能超过200字" name="userText"></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary">确认并提交</button>

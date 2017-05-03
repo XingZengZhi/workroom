@@ -18,16 +18,17 @@
 			<li class="active"><a href="${pageContext.request.contextPath }/nav_index">首页</a></li>
 			<li><a href="${pageContext.request.contextPath }/nav_apply">加入申请</a></li>
 			<li><a href="${pageContext.request.contextPath }/nav_show">成果展区</a></li>
+			<li><a href="${pageContext.request.contextPath }/nav_share">知识分享</a></li>
 			<li><a href="${pageContext.request.contextPath }/nav_summary">关于我们</a></li>
-			<%-- <li><a href="${pageContext.request.contextPath }/nav_message">信息</a></li> --%>
-			<li class="dropdown pull-right"><c:if
-					test="${not empty exitUser}">
+			<li class="dropdown pull-right">
+				<c:if test="${not empty exitUser}">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">${exitUser.userName }<strong
 						class="caret"></strong></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">我的评论</a></li>
-						<li><a href="#">个人资料</a></li>
-						<li><a href="#">我的文章</a></li>
+						<li><a href="${pageContext.request.contextPath }/user_Setting?username=${exitUser.userName }">个人资料设置</a></li>
+						<li><a href="${pageContext.request.contextPath }/nav_mysharejsp">我的知识</a></li>
+						<li><a href="${pageContext.request.contextPath }/nav_sharelorejsp">分享知识</a></li>
 						<li class="divider"></li>
 						<li><a href="${pageContext.request.contextPath }/user_exit">退出</a></li>
 					</ul>

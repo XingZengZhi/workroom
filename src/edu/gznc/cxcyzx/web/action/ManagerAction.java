@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -30,6 +31,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 	private static final long serialVersionUID = 1L;
 	
 	private Manager manager = new Manager();
+	
 	@Override
 	public Manager getModel() {
 		return manager;
@@ -46,8 +48,15 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 		String uImg = ServletActionContext.getRequest().getParameter("uImg"); //管理员头像图片名
 		String remeber = ServletActionContext.getRequest().getParameter("remeber"); //1是记住我，0不记住我
 		Manager ma = mService.findManager(uName, uPass);
+		System.out.println(uName + " " + uPass);
 		if(ma != null){
-			ma.setmImg(uImg);
+			if(!ma.getmImg().contentEquals("")){
+				if(!ma.getmImg().equals(uImg) && !uImg.equals("default.jpg")){
+					ma.setmImg(uImg);
+				}
+			}else{
+				ma.setmImg(uImg);
+			}
 			mService.saveOrupdate(ma);
 			if(remeber.equals("1")){
 				Cookie cookie = new Cookie("mName",ma.getmName());
@@ -58,7 +67,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 				//向客户端设置cookie
 				ServletActionContext.getResponse().addCookie(cookie);
 			}
-			ServletActionContext.getRequest().setAttribute("Manager", ma);
+			ActionContext.getContext().getSession().put("Manager", ma);
 			return "bgindex";
 		}
 		ServletActionContext.getRequest().setAttribute("errorTip", "用户名或密码错误");
@@ -75,7 +84,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 	}
 	//管理者注销
 	public String removeManager(){
-		ServletActionContext.getRequest().removeAttribute("Manager");
+		ActionContext.getContext().getSession().put("Manager", null);
 		return "bgLogin";
 	}
 	//获取管理员记住我的cookie

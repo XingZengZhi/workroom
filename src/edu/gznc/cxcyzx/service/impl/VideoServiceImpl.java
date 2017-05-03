@@ -33,4 +33,9 @@ public class VideoServiceImpl implements VideoService {
 		return jedis.get("videos");
 	}
 
+	@Override
+	public void SaveVideo(Video video) {
+		videoDao.save(video);
+	}
+
 }

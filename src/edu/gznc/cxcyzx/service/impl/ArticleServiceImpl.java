@@ -29,16 +29,37 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public String findAllArticle() {
+	public String FindAllArticleNoRoom() {
+		Jedis jedis = JedisUtils.getJedis();
+		if(jedis.get("userArticles") == null){
+			List<Article> articles = articleDao.FindAllArticleNoRoom();
+			//解决对象关联后导致json数据死循环问题
+			JsonConfig jsonConfig = new JsonConfig();
+			jsonConfig.setExcludes(new String[]{"room"});
+			jedis.set("userArticles", JSONArray.fromObject(articles,jsonConfig).toString());
+		}
+		return jedis.get("userArticles");
+	}
+
+	@Override
+	public String FindAllArticleHaveRoom() {
 		Jedis jedis = JedisUtils.getJedis();
 		if(jedis.get("articles") == null){
-			List<Article> articles = articleDao.findAll();
+			List<Article> articles = articleDao.FindAllArticleHaveRoom();
 			//解决对象关联后导致json数据死循环问题
 			JsonConfig jsonConfig = new JsonConfig();
 			jsonConfig.setExcludes(new String[]{"room"});
 			jedis.set("articles", JSONArray.fromObject(articles,jsonConfig).toString());
 		}
 		return jedis.get("articles");
+	}
+
+	@Override
+	public void ShareLore(String username, String articleText) {
+		Article ar = new Article();
+		ar.setArticleText(articleText);
+		ar.setArticleResouce(username);//设置分享用户昵称
+		articleDao.save(ar);
 	}
 
 }

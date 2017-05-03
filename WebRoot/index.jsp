@@ -40,6 +40,9 @@
 			url : "${pageContext.request.contextPath}/user_room",
 			dataType : "json",
 			success : function(data) {
+				$(".thumbnail").each(function(i, n){
+					$(n).attr("title", data[i].roomName);
+				});
 				/* 异步获取工作室的名字 */
 				$("div[class*='row'] h3").each(function(i, n) {
 					$(n).text(data[i].roomName);
@@ -85,11 +88,8 @@
 						<button type="button" class="btn btn-primary">确定</button>
 					</div>
 				</div>
-				<!-- /.modal-content -->
 			</div>
-			<!-- /.modal-dialog -->
 		</div>
-		<!-- /.modal -->
 
 		<div class="row-fluid" style="margin-top: 20px;">
 			<div class="col-md-12">
@@ -99,13 +99,13 @@
 				<div class="banner">
 					<ul class="">
 						<li><a href=""><img
-								src="${pageContext.request.contextPath }/barnerimg/banner1.png"></a></li>
+								src="${pageContext.request.contextPath }/barnerimg/barner-1.jpg"></a></li>
 						<li><a href=""><img
-								src="${pageContext.request.contextPath }/barnerimg/banner2.png"></a></li>
+								src="${pageContext.request.contextPath }/barnerimg/barner-3.jpg"></a></li>
 						<li><a href=""><img
-								src="${pageContext.request.contextPath }/barnerimg/banner3.png"></a></li>
+								src="${pageContext.request.contextPath }/barnerimg/barner-2.jpg"></a></li>
 						<li><a href=""><img
-								src="${pageContext.request.contextPath }/barnerimg/banner4.png"></a></li>
+								src="${pageContext.request.contextPath }/barnerimg/barner-4.jpg"></a></li>
 					</ul>
 					<div class="left-btn"></div>
 					<div class="right-btn"></div>
@@ -158,7 +158,7 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img src="${pageContext.request.contextPath }/img/image1.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image4.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
@@ -171,7 +171,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img src="${pageContext.request.contextPath }/img/image2.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image5.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
@@ -184,7 +184,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img src="${pageContext.request.contextPath }/img/image3.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image6.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
@@ -200,7 +200,7 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img src="${pageContext.request.contextPath }/img/image1.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image7.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
@@ -213,7 +213,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img src="${pageContext.request.contextPath }/img/image2.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image8.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>
@@ -226,7 +226,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail">
-							<img src="${pageContext.request.contextPath }/img/image3.jpg" />
+							<img src="${pageContext.request.contextPath }/img/image9.jpg" />
 							<div class="caption">
 								<h3></h3>
 								<p class="title"></p>

@@ -100,4 +100,19 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		response.getWriter().print(userService.findAllRoom());
 		return NONE;
 	}
+	//个人信息设置
+	public String Setting(){
+		String username = ServletActionContext.getRequest().getParameter("username");
+		User user = userService.findByUserName(username);
+		ServletActionContext.getRequest().setAttribute("user", user);
+		return "personsetting";
+	}
+	//个人信息更改
+	public String ChangeMessage(){
+		User newUser = userService.findByUserName(user.getUserName());
+		newUser.setUserPhone(user.getUserPhone());
+		userService.update(newUser);
+		ActionContext.getContext().getSession().put("exitUser",null);
+		return "changesetting";
+	}
 }

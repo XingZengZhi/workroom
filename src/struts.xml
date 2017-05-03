@@ -15,6 +15,9 @@
 			<result name="index">/index.jsp</result>
 			<result name="apply">/apply.jsp</result>
 			<result name="show">/show.jsp</result>
+			<result name="share">/share.jsp</result>
+			<result name="sharelore">/sharelore.jsp</result>
+			<result name="myshare">/myshare.jsp</result>
 		</global-results>
 		<!-- 导航栏跳转 -->
 		<action name="nav_*" method="{1}" class="navAction">
@@ -28,6 +31,8 @@
 			<result name="registeJsp">/WEB-INF/pages/registe.jsp</result>
 			<result name="exit">/index.jsp</result>
 			<result name="registe">/index.jsp</result>
+			<result name="personsetting">/WEB-INF/pages/PersonSetting.jsp</result>
+			<result name="changesetting">/index.jsp</result>
 		</action>
 		<!-- 工作室模块 -->
 		<action name="room_*" method="{1}" class="roomAction">
@@ -47,7 +52,7 @@
 			<result name="bgindex">/WEB-INF/pages/bgIndex.jsp</result>
 			<result name="bgLogin">/bgLogin.jsp</result>
 		</action>
-		<!-- 文件上传模块 -->
+		<!-- 图片上传模块 -->
 		<action name="fileUpload" method="fileUpload" class="uploadAction">
 			<interceptor-ref name="fileUpload">
 				<!-- 允许上传的图片类型 -->
@@ -57,6 +62,10 @@
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack" />
 			<param name="savePath">upload</param>
+		</action>
+		<!-- 视频上传模块 -->
+		<action name="VideoUpload" method="vUpload" class="videoUpload">
+			<param name="savePath">videos</param>
 		</action>
 		<!-- 文件下载 -->
 		<action name="download" class="downloadAction">
